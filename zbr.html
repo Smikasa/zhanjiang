@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重保区左侧</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/zbr.css">
+</head>
+<body style="overflow: hidden;">
+    <div id="zbrApp" v-cloak>
+        <div style="width:1762px;margin:0 auto;">
+            <div class="top clearfix">
+                <div class="total clearfix fl">
+                    <div class="total-icon fl"></div>
+                    <div class="fl">
+                        <div class="total-title">{{allNum.name}}</div>
+                        <div class="total-info">
+                            <span class="total-number">{{allNum.number}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="spread fl" v-for="item in spread">
+                    <div class="spread-title">{{item.name}}</div>
+                    <div>
+                        <span class="spread-number">{{item.Num}}</span>
+                        <span class="spread-per">({{item.Ratio}})</span>
+                    </div>
+                    
+                    <div v-if="item.hasOwnProperty('Yesterday') && item.Yesterday">
+                        <span class="spread-yes">昨日</span>
+                        <span class="spread-diff">{{item.Yesterday}}</span>
+                    </div>
+                </div>
+                <div class="top-bottom"></div>
+            </div>
+            <div style="width:1042px">
+                <div class="left">
+                    <div class="left-top clearfix" >
+                        <div class="fl left-top-number">
+                        <div class="top-title">人数曲线图</div>
+                        <div>
+                            <ul class="clearfix tab">
+                                <li class="tab-pane fl" :class= "[curPeopleNumber === 5 ?'active':'']"  @click="changCurPeopleNumber(5)">五分钟</li>
+                                <li class="tab-pane fl" :class= "[curPeopleNumber === 15 ?'active':'']" @click="changCurPeopleNumber(15)">15分钟</li>
+                            </ul>
+                        </div>
+                        <div id="peopleNumber"  class="people-number" clstyle="width: 515px;height: 424px;"></div>
+                        </div>
+                        <div class="fr left-top-terminal">
+                        <div class="top-title">终端型号分布</div>
+                        <div>
+                            <div id="terminal"  class='terminal' style="width: 521;height: 423px;"></div>
+                        </div>
+                        </div>  
+                    </div>
+                    <div class="left-center">
+                        <div>
+                            <ul class="clearfix tab">
+                                <li class="tab-pane fl" :class= "[curPeopleSpread === 0 ?'active':'']" @click="changCurPeopleSpread(0)">地图</li>
+                                <li class="tab-pane fr" :class= "[curPeopleSpread === 1 ?'active':'']" @click="changCurPeopleSpread(1)">列表</li>
+                            </ul>
+                        </div>
+                        <div v-show="curPeopleSpread === 0">
+                            <!-- 中国地图展示 -->
+                            <div class="map-contain" >
+                                <div id="map" class="map"></div> 
+                                <div class="map-btns clearfix">
+                                    <div class="fl" :class="[curMapArea === 'china' ? 'active' : '']" @click="changSpreadMap('china')">境内人员分布</div>
+                                    <div class="fl" :class="[curMapArea === 'world' ? 'active' : '']" @click="changSpreadMap('world')">境外人员分布</div>
+                                    <div class="fl" :class="[curMapArea === 'province' ? 'active' : '']" @click="changSpreadMap('province')">省内人员分布</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-show="curPeopleSpread === 1">
+                            echart15分钟
+                        </div>
+                    </div>
+                    <div class="left-bottom">
+                        <div class="bottom-title">性别分布</div>
+                        <div class="clearfix">
+                            <div class="clearfix fl man">
+                                <div class="sex-icon fl"></div>
+                                <div class="sex-info fl">
+                                    <div class="sex-info-per">{{man.number}}</div>
+                                    <div class="sex-info-type">{{man.name}}</div>
+                                </div>
+                            </div>
+                            <div class="clearfix fl woman">
+                                <div class="sex-icon  fl"></div>
+                                <div class="sex-info fl">
+                                    <div class="sex-info-per">{{woman.number}}</div>
+                                    <div class="sex-info-type">{{woman.name}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  数据 -->
+    <script type="text/javascript" src="test/res.js"></script>
+    <!-- 基础组件 -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/ehcart.js"></script>
+    <script type="text/javascript" src="js/polyfill.min.js"></script>
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script type="text/javascript" src="js/qs.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/Config.js"></script>
+    <!-- echart地图数据 -->
+    <script type="text/javascript" src="js/map/js/china.js"></script>
+    <script type="text/javascript" src="js/map/js/world.js"></script>
+    <script type="text/javascript" src="js/map/js/province/beijing.js"></script>
+    
+    
+    <!-- 地图百度 -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?vqHy65zbK2I47ifo4MmMOpWPRIBG94El"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script> -->
+    <!-- 业务处理 -->
+    <script type="text/javascript" src="js/zbr.js"></script>
+</body>
+</html>

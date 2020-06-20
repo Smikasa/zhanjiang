@@ -1,0 +1,223 @@
+
+#zbrApp{
+    height:100%;
+    width:100%;
+    background-color: #0e1928;
+    overflow: auto;
+    padding: 10px;
+}
+
+/*  echart 宽度 */
+.people-number {
+    width: 446px;
+    height: 328px;
+}
+.terminal {
+    width: 519px;
+    height: 464px;
+}
+.map {
+    width: 1042px;
+    height: 760px;
+}
+
+.tab {
+    cursor: pointer;
+    text-align: center;
+}
+
+.top {
+    padding-top: 73px;
+    height: 307px;
+    position: relative;
+   
+}
+.top-bottom {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    background-size: 100% 100%;
+    bottom: 0px;
+    height: 150px;
+    background-image: url(../img/top-bg.png);
+}
+.top .total {
+    margin-right: 110px;
+}
+
+.top .spread:not(:last-child) {
+    margin-right: 100px;
+}
+
+.top .total-icon {
+    width: 118px;
+    height: 118px;
+    background-image: url(../img/total.png);
+    background-size: 100%;
+}
+
+.top .total-title ,.top .spread-title {
+    color: #248ecc;
+    font-size: 26px;
+}
+
+.top .total-number ,.top .spread-number {
+    color: #fefefe;
+    font-size: 48px;
+}
+
+.top .total-per ,.top .spread-per {
+    color: #999999;
+    font-size: 30px;
+}
+
+.top .total-yes ,.top .spread-yes {
+    color: #999999;
+    font-size: 30px;
+}
+
+.top .total-diff ,.top .spread-diff {
+    color: #d19328;
+    font-size: 26px;
+}
+
+
+.left-top {
+    margin-bottom: 67px;
+}
+
+.left-top .top-title {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 47px;
+}
+
+.left-top  .left-top-number {
+    margin-right: 37px;
+}
+
+.left-top  .left-top-terminal .top-title {
+    padding-left: 38px;
+}
+
+
+.left-top .tab{
+    height: 46px;
+    line-height: 46px;
+    font-size: 26px;
+    width: 486px;
+    margin-bottom: 45px;
+}   
+.left-top .tab-pane {
+    width: 50%;
+    color: #646566;
+    background-color: #010817;
+}
+
+.left-top .tab-pane.active {
+    background-color: #4456a4 ;
+    color: #c7c7c7;
+}
+
+.left-center {
+    margin-bottom: 75px;
+}
+
+.left-center .tab{
+    height: 56px;
+    line-height: 56px;
+    font-size: 26px;
+    width: 486px;
+    margin-bottom: 7px;
+}   
+.left-center .tab-pane {
+    width: 239px;
+    border: 1px solid transparent;
+    color: #646566;
+    background-color: #020c1a;
+}
+
+.left-center .tab-pane.active {
+    background-color: #0c162d ;
+    border-color: #163565;
+    color: #c7c7c7;
+   
+}
+
+.left-center .map-contain {
+    position: relative;
+    border: 1px solid #020e1d;
+}
+
+.left-center .map-btns {
+    position: absolute;
+    top: 21px;
+    left: 18px;
+    height: 0px;
+    color: white;
+}
+
+.left-center .map-btns div {
+    height: 64px;
+    line-height: 38px;
+    width: 200px;
+    margin-right: 20px;
+    text-align: center;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.left-center .map-btns div.active {
+    background-image: url(../img/top-bg.png);
+}
+
+.left-bottom {
+    color: white;
+    margin-bottom: 70px;
+}
+.left-bottom .bottom-title {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 60px;
+}
+
+.left-bottom .sex-icon {
+    height: 101px;
+    width: 53px;
+    background-size: 100%;
+    margin-right: 28px;
+}
+.left-bottom .man ,.bottom .woman{
+    margin: 0px 110px 0 34px;
+}
+
+.left-bottom .man .sex-icon {
+    background-image: url('../img/man.png');
+}
+.left-bottom .woman .sex-icon {
+    background-image: url('../img/woman.png');
+}
+
+.left-bottom .man .sex-info-per {
+    color: #3a71cc;
+    font-size: 54px;
+}
+.left-bottom .woman .sex-info-per {
+    color: #b851af;
+    font-size: 54px;
+}
+.left-bottom .sex-info-type {
+    color: #6d7d99;
+    font-size: 24p;
+}
+
+
+
+.w50 {
+    width: 50%;
+}
+
+.w100{
+    width: 100%;
+}
+
