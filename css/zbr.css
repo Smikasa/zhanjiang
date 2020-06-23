@@ -3,6 +3,7 @@
     height:100%;
     width:100%;
     background-color: #0e1928;
+    /* background-color: transparent; */
     overflow: auto;
     padding: 10px;
 }
@@ -16,10 +17,11 @@
     width: 519px;
     height: 464px;
 }
-.map {
+.map,.map-table-contain {
     width: 1042px;
     height: 760px;
 }
+
 
 .tab {
     cursor: pointer;
@@ -83,7 +85,7 @@
 
 
 .left-top {
-    margin-bottom: 67px;
+    margin-bottom: 55px;
 }
 
 .left-top .top-title {
@@ -120,7 +122,7 @@
 }
 
 .left-center {
-    margin-bottom: 75px;
+    margin-bottom: 55px;
 }
 
 .left-center .tab{
@@ -171,9 +173,87 @@
     background-image: url(../img/top-bg.png);
 }
 
+.left-center .table-item-contain {
+    margin: 90px 60px 59px;
+    overflow: auto;
+    height: 600px;
+}
+
+
+.left-center .map-table-contain {
+    position: relative;
+    border: 1px solid #020e1d;
+    overflow: auto;
+}
+
+/* 进度条 */
+
+.left-center .map-table-contain .table-item {
+    /* width: 600px; */
+    height: 20px;
+    margin-bottom: 16px;
+    color: white;
+}
+.left-center .map-table-contain .table-item .table-progress-area{
+    margin-right: 16px;
+    color: white;
+    width: 55px;
+}
+.left-center .map-table-contain .table-item .table-progress {
+    width: 700px;
+    height: 20px;
+    /* overflow: hidden; */
+    position: relative;
+}
+.left-center .map-table-contain .table-item .table-progress .table-progress-bg{
+    background-color: #021835;
+    position: absolute;
+    width: 770px;
+    height: 20px;
+    left: 0;
+    top: 0;
+}
+
+.left-center .map-table-contain .table-item .table-progress .table-progress-pro{
+    background-color: #0d4b98;
+    width: 400px;
+    height: 20px;
+    position: relative;
+    
+}
+.left-center .map-table-contain .table-item .table-progress .table-progress-num{
+    height: 20px;
+    position: absolute;
+    right: -40px;
+}
+
+
+.left-center .map-table-contain .map-table-btns {
+    position: absolute;
+    top: 21px;
+    left: 18px;
+    height: 0px;
+    color: white;
+}
+
+.left-center .map-table-contain .map-table-btns div {
+    height: 46px;
+    line-height: 46px;
+    width: 200px;
+    margin-right: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #020c1a;
+    color: #c7c7c7;
+}
+
+.left-center .map-table-contain .map-table-btns div.active {
+    background-color: #0c162d;
+}
+
 .left-bottom {
     color: white;
-    margin-bottom: 70px;
+    margin-bottom: 0px;
 }
 .left-bottom .bottom-title {
     font-size: 30px;
@@ -220,4 +300,9 @@
 .w100{
     width: 100%;
 }
-
+.rightThree{
+    position: absolute;
+    right:80px;
+    top:310px;
+    height:1640px;
+}

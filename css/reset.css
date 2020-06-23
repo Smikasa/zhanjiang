@@ -39,3 +39,25 @@ div{
 
 
        
+.table-item-contain::-webkit-scrollbar
+{
+  width: 4px;
+  height: 4px;
+  background-color: transparent;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.table-item-contain::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #053254;
+}
+
+/*定义滑块 内阴影+圆角*/
+.table-item-contain::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #01a1ff;
+}

@@ -4,7 +4,7 @@ let clock = new Vue({
         actvie: 'actvie',
         // top 
         chartPeopleNumber: '',
-        curPeopleSpread: 0,
+       
         curPeopleNumber: 5,
         allNum: {
             name: '实时总人数',
@@ -39,20 +39,22 @@ let clock = new Vue({
         ],
         charTerminal: '',
         // center 
+        curPeopleSpread: 1,// 地图/列表
         mapPeopleSpread: '',
         mapOptionFrom: '', // 出发地配置
         mapOptionTo: '', // 目的地配置
         mapOptionLine: '',//线条动画配置
-        mapOptionStart: '',
+        curPeopleSpradTable: [],
         geoCoordMap: '', // 坐标信息
         curMapArea:'china',
+        curMapTableArea:'china',
         // bottom
         man: {
             number: "60%",
             name: "男性"
         },
         woman: {
-            number: "60%",
+            number: "40%",
             name: "男性"
         }
     },
@@ -70,7 +72,8 @@ let clock = new Vue({
                 this.axiosPeopleNumber();
                 this.axiosPeopleNumberByTime({ TIME: 5 });
                 this.axiosPeopleTerminal();
-                this.changSpreadMap(this.curMapArea)
+                this.changSpreadMap(this.curMapArea);
+                this.changSpreadMapTable(this.curMapTableArea);
             })
         },
         /**
@@ -213,7 +216,7 @@ let clock = new Vue({
                     splitLine: {
                         lineStyle: {
                             color: [
-                                '#0f2039', '#0f2039',
+                                '#0368b4', '#0368b4',
                                 // 'rgba(238, 197, 102, 0.4)', 'rgba(238, 197, 102, 0.6)',
                                 // 'rgba(238, 197, 102, 0.8)', 'rgba(238, 197, 102, 1)'
                             ].reverse()
@@ -241,6 +244,19 @@ let clock = new Vue({
                     },
                     areaStyle: {
                         color: '#056d8b'
+                    },
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0, color: 'red' // 0% 处的颜色
+                        }, {
+                            offset: 1, color: 'blue' // 100% 处的颜色
+                        }],
+                        globalCoord: false // 缺省为 false
                     },
                     // areaStyle: {normal: {}},
                     data: [
@@ -532,6 +548,46 @@ let clock = new Vue({
                 })
             }
         },
+         /**
+         * @description 地图表格数据切换
+         */
+        changSpreadMapTable (area) {
+            this.curMapTableArea = area;
+            if (area === 'world') {
+                let data= this.cloneArr(worldData1)
+                this.curPeopleSpradTable = this.getTotal(data);
+            } else if (area === "china") {
+                let data= this.cloneArr(chinaData1)
+                this.curPeopleSpradTable = this.getTotal(data);
+            } else if (area === 'province') {
+                let data= this.cloneArr(beijingData1)
+                this.curPeopleSpradTable = this.getTotal(data);
+            }
+        },
+        cloneArr(array){
+            let arr = [];
+            array.filter(function (item) {
+                arr.push(Object.assign({},item))
+                return item;
+            })
+            return arr
+        },
+         /**
+         * @description 获取总数
+         */
+        getTotal(array){
+            let num = 0;
+            let arr = [];
+            array.map(function name(item) {
+                num += item.value
+            })
+            arr = array.map(function name(item) {
+                item.value = (item.value/num).toFixed(2)
+                item.pro = (item.value * 100) + '%'
+                return item;
+            })
+            return arr;
+        },
         /**
          * 获取数据-顶部总人数和各类别人数 
          */
@@ -783,6 +839,7 @@ let clock = new Vue({
             mapOptionFrom = Object.assign(this.mapOptionFrom, {
                 name: data[0].name,
                 data: data.map(function (dataItem) {
+                    console.log(dataItem,geoCoordMap,geoCoordMap[dataItem[0].name])
                     return {
                         name: dataItem[0].name,
                         value: geoCoordMap[dataItem[0].name].concat([dataItem[0].value])
@@ -792,6 +849,7 @@ let clock = new Vue({
             mapOptionTo = Object.assign(this.mapOptionTo, {
                 name: data[0].name,
                 data: data.map(function (dataItem) {
+                    console.log(dataItem,geoCoordMap[dataItem[1].name])
                     return {
                         name: dataItem[1].name,
                         value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
@@ -807,6 +865,7 @@ let clock = new Vue({
             //         };
             //     })
             // })
+            console.log(mapOptionFrom,mapOptionTo)
             return [mapOptionLines, mapOptionFrom, , mapOptionTo]
         },
     }

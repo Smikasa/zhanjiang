@@ -1,0 +1,35 @@
+#zblApp{
+    /* background-color: rgba(0,0,0,.5); */
+    width:100%;
+    height:100%;
+    /* padding:60px 0 132px 40px; */
+}
+.nowTime{
+    font-size:79px;
+    color:#19adc8;
+    font-weight: 700;
+    padding:60px 0 0 40px;
+}
+.timeblew{
+    font-size:26px;
+    color:#248ecc;
+    padding: 27px 0 39px 40px;
+}
+.fir{
+    list-style-type: none;
+    overflow: hidden;
+    width: 100%;
+}
+.fir li{
+    float: left;
+    height:142px;
+    overflow: hidden;
+}
+.fir li .le{
+    float:left;
+    width:150px;
+    height:100%;
+}
+.ar{
+    width:100%;
+}
