@@ -62,7 +62,7 @@ let clock = new Vue({
     },
     mounted () {
         this.init();
-        this.show_num1(934610);
+        this.show_num1(123414451467890);
     },
     methods: {
         show_num1:function(n){
@@ -74,19 +74,15 @@ let clock = new Vue({
                 }
                 var num = String(n).charAt(i);
                 //根据数字图片的高度设置相应的值
-                var y = -parseInt(num) * 126;
+                var y = parseInt(num) ?  -(56 + (parseInt(num)-1) * 81.7) :"-793";
                 var obj = $(".t_num1 i").eq(i);
                obj.animate({
-                    backgroundPosition: '(-268px ' + String(y) + 'px)'
+                    backgroundPosition: '(-55px ' + String(y) + 'px)'
                 }, 'slow', 'swing', function() {});
             }
         },
         init () {
             // 初始化组件
-            // 地图背景图请求
-            this.imgFrom = $('.areaFrom img')
-            this.imgTo = new Image();
-            this.imgTo.src = '../img/area-to-bg.png';
             this.$nextTick(function () {
                 this.initChartPeopleNumber();
                 this.initChartPeopleTerminal();

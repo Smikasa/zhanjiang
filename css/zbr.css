@@ -14,7 +14,7 @@
     line-height: 1;
 }
 
-.map {
+.map, .map-table-contain {
     background-image: url('../img/map-bg.png');
     background-size: 100% 100%;
 }
@@ -204,7 +204,7 @@
 }
 
 .left-center .map-btns div.active {
-    background-image: url(../img/top-bg.png);
+    background-image: url(../img/map-btns-bg.png);
     color:#fff;
 }
 
@@ -349,9 +349,10 @@
     margin-bottom:50px;
 }
 .t_num i {
-    width: 80px;
-    height: 80px;
+    width: 30px;
+    height: 60px;
     display: inline-block;
     background: url(../img/num.png) no-repeat;
     background-position:0 0;
+    background-size: 832%;
 }
