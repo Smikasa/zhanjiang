@@ -42,6 +42,8 @@ let clock = new Vue({
         curPeopleSpread: 1,// 地图/列表
         mapPeopleSpread: '',
         mapOptionFrom: '', // 出发地配置
+        imgFrom:'',
+        imgTo:'',
         mapOptionTo: '', // 目的地配置
         mapOptionLine: '',//线条动画配置
         curPeopleSpradTable: [],
@@ -81,6 +83,10 @@ let clock = new Vue({
         },
         init () {
             // 初始化组件
+            // 地图背景图请求
+            this.imgFrom = $('.areaFrom img')
+            this.imgTo = new Image();
+            this.imgTo.src = '../img/area-to-bg.png';
             this.$nextTick(function () {
                 this.initChartPeopleNumber();
                 this.initChartPeopleTerminal();
@@ -262,6 +268,7 @@ let clock = new Vue({
                     lineStyle: {
                         color: 'transparent'
                     },
+<<<<<<< Updated upstream
                     textStyle: { // 图例项的文本样式。
                         color:"#1f88c5",
                         fontWeight: '700' // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
@@ -276,6 +283,9 @@ let clock = new Vue({
                     },
                     areaStyle: {
                         opacity: 0.7,
+=======
+                    areaStyle:{
+>>>>>>> Stashed changes
                         color: {
                             type: 'linear',
                             x: 0,
@@ -285,12 +295,21 @@ let clock = new Vue({
                             colorStops: [{
                                 offset: 0, color: '#007591' // 0% 处的颜色
                             }, {
+<<<<<<< Updated upstream
                                 offset: 1, color: '#043e90' // 100% 处的颜色
                             }],
                             globalCoord: false // 缺省为 false
                         },
                         shadowColor: 'rgba(0, 0, 0, 0.5)',
                         shadowBlur: 10
+=======
+                                offset: 0.5, color: '#004e82' // 100% 处的颜色
+                            },{
+                                offset: 1, color: '#043e90' // 100% 处的颜色
+                            }],
+                            global: false // 缺省为 false
+                        }
+>>>>>>> Stashed changes
                     },
                     
                     // areaStyle: {normal: {}},
@@ -309,6 +328,8 @@ let clock = new Vue({
         * @description 地图-echart
         */
         initMap () {
+            //  背景图 
+            
             // 基于准备好的dom，初始化echarts实例
             this.mapPeopleSpread = echarts.init(document.getElementById('map'));
             // 线条动画
@@ -350,73 +371,66 @@ let clock = new Vue({
                 *    ]
                 *    }
                */
-            },
+            }
                 //目的地
-                this.mapOptionTo = {
-                    // 目的地信息 
-                    name: '',
-                    type: 'scatter',
-                    coordinateSystem: 'geo',
-                    zlevel: 2,
-                    // emphasis: {
-                    //     label: {
-                    //         show: true,
-                    //         formatter: function (param) {
-                    //             return param.data[3];
-                    //         },
-                    //         position: 'top'
-                    //     }
+            this.mapOptionTo = {
+                // 目的地信息 
+                name: '',
+                type: 'scatter',
+                coordinateSystem: 'geo',
+                zlevel: 4,
+                // emphasis: {
+                //     label: {
+                //         show: true,
+                //         formatter: function (param) {
+                //             return param.data[3];
+                //         },
+                //         position: 'top'
+                //     }
+                // },
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(25, 100, 150, 0.5)',
+                    shadowOffsetY: 5,
+                    // color: new echarts.graphic.RadialGradient(0.1, 0.3, 1, [{
+                    //     offset: 0,
+                    //     color: '#8af2e2'
+                    // }, {
+                    //     offset: 1,
+                    //     color: '#8af2e2'
+                    // }]),
+                    color:'#a9c09a',
+                    // color: {
+                    //     image: this.imgFrom, // 支持为 HTMLImageElement, HTMLCanvasElement，不支持路径字符串
+                    //     repeat: 'repeat'
                     // },
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowColor: 'rgba(25, 100, 150, 0.5)',
-                        shadowOffsetY: 5,
-                        // color: new echarts.graphic.RadialGradient(0.1, 0.3, 1, [{
-                        //     offset: 0,
-                        //     color: 'transparent'
-                        // }, {
-                        //     offset: 1,
-                        //     color: '#278559'
-                        // }]),
-                        color: {
-                            type: 'radial',
-                            x: 0.5,
-                            y: 0.5,
-                            r: 0.5,
-                            colorStops: [{
-                                offset: 0, color: 'transparent' // 0% 处的颜色
-                            }, {
-                                offset: 1, color: '#278559' // 100% 处的颜色
-                            }],
-                            global: false // 缺省为 false
-                        },
-                        formatter: '{b}',
-                    },
-                    rippleEffect: {
-                        period: 4,
-                        brushType: 'stroke',
-                        scale: 4
-                    },
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'inside',
-                            formatter: '{b}\n{@value}',
-                        }
-                    },
-                    symbolSize: 50,
-                    data: []
-                    /**
-                     * 获取方法
-                     * value： geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-                     * 
-                     * 数据格式
-                     * [{
-                     * name:''
-                     * value:''
-                     * }]
-                     */
-                }
+                    formatter: '{b}',
+                },
+                rippleEffect: {
+                    period: 4,
+                    brushType: 'stroke',
+                    scale: 4
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'inside',
+                        formatter: '{b}\n{@value}',
+                    }
+                },
+                symbolSize: 50,
+                data: []
+                /**
+                 * 获取方法
+                 * value： geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                 * 
+                 * 数据格式
+                 * [{
+                 * name:''
+                 * value:''
+                 * }]
+                 */
+            }
             // 出发地自身绘制
             this.mapOptionFrom = {
                 name: '',
@@ -433,9 +447,9 @@ let clock = new Vue({
                 //     }
                 // },
                 itemStyle: {
-                    // shadowBlur: 10,
-                    // shadowColor: 'rgba(25, 100, 150, 0.5)',
-                    // shadowOffsetY: 5,
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(25, 100, 150, 0.5)',
+                    shadowOffsetY: 5,
                     // color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
                     //     offset: 0,
                     //     color: '#067691'
@@ -446,26 +460,11 @@ let clock = new Vue({
                     //     offset: 1,
                     //     color: '#00ffff'
                     // }]),
-                    color: {
-                        type: 'radial',
-                        x: 0.5,
-                        y: 0.5,
-                        r: 0.5,
-                        colorStops: [{
-                            offset: 0,
-                            color: '#00ffff'
-                        }, {
-                            offset: 0.2,
-                            color: '#00ffff'
-                        },{
-                            offset: 0.3,
-                            color: 'transparent'
-                        }, {
-                            offset: 1,
-                            color: '#00ffff'
-                        }],
-                        global: false // 缺省为 false
-                    },
+                    color:'#8af2e2',
+                    // color: {
+                    //     image: imgTo, // 支持为 HTMLImageElement, HTMLCanvasElement，不支持路径字符串
+                    //     repeat: 'repeat'
+                    // },
                     formatter: '{b}',
                 },
                 rippleEffect: {

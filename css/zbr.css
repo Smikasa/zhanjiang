@@ -7,7 +7,20 @@
     background: url(../img/bg.png) no-repeat;
     background-size:cover;
     overflow: auto;
-    padding: 10px;
+}
+.main-contain {
+    width: 2100px;
+    padding: 82px 79px 0 252px;
+    line-height: 1;
+}
+
+.map {
+    background-image: url('../img/map-bg.png');
+    background-size: 100% 100%;
+}
+.map,.map-table-contain {
+    width: 1042px;
+    height: 760px;
 }
 
 /*  echart 宽度 */
@@ -31,8 +44,7 @@
 }
 
 .top {
-    padding-top: 73px;
-    height: 307px;
+    height: 238px;
     position: relative;
    
 }
@@ -49,24 +61,41 @@
     margin-right: 110px;
 }
 
-.top .spread:not(:last-child) {
-    margin-right: 100px;
+.top .spread-contain {
+    width: 1257px;
+}
+
+.top .spread {
+    width: 25%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.top .spread-info {
+    margin-bottom: 18px;
 }
 
 .top .total-icon {
-    width: 118px;
-    height: 118px;
+    width: 150px;
+    height: 150px;
+    margin-top: -20px;
     background-image: url(../img/total.png);
     background-size: 100%;
 }
 
 .top .total-title ,.top .spread-title {
-    color: #248ecc;
+    color: #228fcf;
     font-size: 26px;
+}
+.top .total-title {
+    margin-bottom: 24px;
+}
+.top .spread-title {
+    margin-bottom: 22px;
 }
 
 .top .total-number ,.top .spread-number {
-    color: #fefefe;
+    color: #ffffff;
     font-size: 48px;
 }
 
@@ -81,10 +110,13 @@
 }
 
 .top .total-diff ,.top .spread-diff {
-    color: #d19328;
+    color: #ba822a;
     font-size: 26px;
 }
 
+.left {
+    width: 1106px;
+}
 
 .left-top {
     margin-bottom: 55px;
@@ -93,7 +125,7 @@
 .left-top .top-title {
     font-size: 30px;
     color: white;
-    margin-bottom: 47px;
+    margin-bottom: 48px;
 }
 
 .left-top  .left-top-number {
@@ -115,16 +147,16 @@
 .left-top .tab-pane {
     width: 50%;
     color: #636666;
-    background-color: #000917;
+    background-color: #010817;
 }
 
 .left-top .tab-pane.active {
-    background-color: #19263f ;
+    background-color: #4457a4 ;
     color: #c7c7c8;
 }
 
 .left-center {
-    margin-bottom: 55px;
+    margin-bottom: 70px;
 }
 
 .left-center .tab{
@@ -137,20 +169,20 @@
 .left-center .tab-pane {
     width: 239px;
     border: 1px solid transparent;
-    color: #646566;
+    color: #656565;
     background-color: #020c1a;
 }
 
 .left-center .tab-pane.active {
     background-color: #0c162d ;
     border-color: #163565;
-    color: #c7c7c7;
+    color: #ececec;
    
 }
 
 .left-center .map-contain {
     position: relative;
-    border: 1px solid #020e1d;
+    /* border: 1px solid #163565; */
 }
 
 .left-center .map-btns {
@@ -164,8 +196,7 @@
 .left-center .map-btns div {
     height: 64px;
     line-height: 38px;
-    width: 200px;
-    margin-right: 20px;
+    padding: 0 26px;
     text-align: center;
     background-size: 100% 100%;
     cursor: pointer;
@@ -186,7 +217,7 @@
 
 .left-center .map-table-contain {
     position: relative;
-    border: 1px solid #020e1d;
+    border: 1px solid #163565;
     overflow: auto;
 }
 
@@ -248,7 +279,7 @@
     text-align: center;
     cursor: pointer;
     background-color: #020c1a;
-    color: #656568;
+    color: #c7c7c7;
 }
 
 .left-center .map-table-contain .map-table-btns div.active {
@@ -262,7 +293,7 @@
 .left-bottom .bottom-title {
     font-size: 30px;
     color: white;
-    margin-bottom: 60px;
+    margin-bottom: 58px;
 }
 
 .left-bottom .sex-icon {
@@ -285,10 +316,12 @@
 .left-bottom .man .sex-info-per {
     color: #3a71cc;
     font-size: 54px;
+    margin-bottom: 24px;
 }
 .left-bottom .woman .sex-info-per {
     color: #b851af;
     font-size: 54px;
+    margin-bottom: 24px;
 }
 .left-bottom .sex-info-type {
     color: #6d7d99;
