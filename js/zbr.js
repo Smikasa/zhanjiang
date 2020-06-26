@@ -60,8 +60,25 @@ let clock = new Vue({
     },
     mounted () {
         this.init();
+        this.show_num1(934610);
     },
     methods: {
+        show_num1:function(n){
+            var it = $(".t_num1 i");
+            var len = String(n).length;
+            for(var i = 0; i < len; i++) {
+                if(it.length <= i) {
+                    $(".t_num1").append("<i></i>");
+                }
+                var num = String(n).charAt(i);
+                //根据数字图片的高度设置相应的值
+                var y = -parseInt(num) * 126;
+                var obj = $(".t_num1 i").eq(i);
+               obj.animate({
+                    backgroundPosition: '(-268px ' + String(y) + 'px)'
+                }, 'slow', 'swing', function() {});
+            }
+        },
         init () {
             // 初始化组件
             this.$nextTick(function () {
@@ -169,7 +186,7 @@ let clock = new Vue({
                         // xAxisIndex: 1, // 对应坐标轴
                         yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
-                            color: '#4456a4'
+                            color: '#4457a4'
                         },
                         data: []
                     },
@@ -177,10 +194,10 @@ let clock = new Vue({
                         name: '昨日人数',
                         type: 'line',
                         itemStyle: { // 折线拐点
-                            color: '#31aab8'
+                            color: '#3ab6d2'
                         },
                         lineStyle: {// 折线
-                            color: '#31aab8'
+                            color: '#3ab6d2'
                         },
                         symbol: "circle",// 实心圆
                         data: []
@@ -213,24 +230,27 @@ let clock = new Vue({
                     //         padding: [3, 5]
                     //     }
                     // },
-                    splitLine: {
+                    splitLine: { // (这里是指所有圆环)坐标轴在 grid 区域中的分隔线。
                         lineStyle: {
-                            color: [
-                                '#0368b4', '#0368b4',
-                                // 'rgba(238, 197, 102, 0.4)', 'rgba(238, 197, 102, 0.6)',
-                                // 'rgba(238, 197, 102, 0.8)', 'rgba(238, 197, 102, 1)'
-                            ].reverse()
+                            color: '#0c4188',
                         }
                     },
-                    splitArea: {
-                        show: false
+                    splitArea: { // 坐标轴在 grid 区域中的分隔区域，默认不显示。
+                        show: true,
+                        areaStyle: { // 分隔区域的样式设置。
+                            color: ['#054685'],
+                            opacity:0.2
+                            // 分隔区域颜色。分隔区域会按数组中颜色的顺序依次循环设置颜色。默认是一个深浅的间隔色。
+                        }
                     },
                     axisLine: {
                         lineStyle: {
-                            color: '#1f87c6'
+                            color: '#0c4188'
                         }
                     },
                     indicator: [{
+                        name: 'null', max: 100,
+                        name: 'null', max: 100,
                         name: 'null', max: 100,
                         name: 'null', max: 100,
                         name: 'null', max: 100
@@ -242,28 +262,44 @@ let clock = new Vue({
                     lineStyle: {
                         color: 'transparent'
                     },
+                    textStyle: { // 图例项的文本样式。
+                        color:"#1f88c5",
+                        fontWeight: '700' // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
+                    },
+                    itemStyle: { // 折线拐点标志的样式。
+                        normal: { // 普通状态时的样式
+                            lineStyle: {
+                                width: 0
+                            },
+                            opacity: 0.2
+                        },
+                    },
                     areaStyle: {
-                        color: '#056d8b'
+                        opacity: 0.7,
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: '#007591' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: '#043e90' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        },
+                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                        shadowBlur: 10
                     },
-                    color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 0,
-                        y2: 1,
-                        colorStops: [{
-                            offset: 0, color: 'red' // 0% 处的颜色
-                        }, {
-                            offset: 1, color: 'blue' // 100% 处的颜色
-                        }],
-                        globalCoord: false // 缺省为 false
-                    },
+                    
                     // areaStyle: {normal: {}},
                     data: [
                         {
                             value: [0, 0, 0],
-                            name: ''
-                        }
+                            name: '',
+                            symbol:'none'
+                        },
                     ]
                 }]
             };
@@ -642,6 +678,7 @@ let clock = new Vue({
             //   });
             let PeopleNumberByTime = params.TIME === 5 ? PeopleNumberByTime1 : PeopleNumberByTime2;
             let res = PeopleNumberByTime.data
+            console.log(PeopleNumberByTime)
             let Today = {
                 x: this.getPeopleNumberXYData(res.Today).x,
                 y: this.getPeopleNumberXYData(res.Today).y
@@ -650,6 +687,7 @@ let clock = new Vue({
                 x: this.getPeopleNumberXYData(res.Yesterday).x,
                 y: this.getPeopleNumberXYData(res.Yesterday).y
             }
+            console.log(Today,Yesterday)
             this.chartPeopleNumber.setOption({
                 xAxis: [
                     {
@@ -839,7 +877,6 @@ let clock = new Vue({
             mapOptionFrom = Object.assign(this.mapOptionFrom, {
                 name: data[0].name,
                 data: data.map(function (dataItem) {
-                    console.log(dataItem,geoCoordMap,geoCoordMap[dataItem[0].name])
                     return {
                         name: dataItem[0].name,
                         value: geoCoordMap[dataItem[0].name].concat([dataItem[0].value])
@@ -849,7 +886,6 @@ let clock = new Vue({
             mapOptionTo = Object.assign(this.mapOptionTo, {
                 name: data[0].name,
                 data: data.map(function (dataItem) {
-                    console.log(dataItem,geoCoordMap[dataItem[1].name])
                     return {
                         name: dataItem[1].name,
                         value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
@@ -865,7 +901,6 @@ let clock = new Vue({
             //         };
             //     })
             // })
-            console.log(mapOptionFrom,mapOptionTo)
             return [mapOptionLines, mapOptionFrom, , mapOptionTo]
         },
     }

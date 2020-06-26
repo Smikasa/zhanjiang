@@ -2,8 +2,10 @@
 #zbrApp{
     height:100%;
     width:100%;
-    background-color: #0e1928;
+    /* background-color: #0e1928; */
     /* background-color: transparent; */
+    background: url(../img/bg.png) no-repeat;
+    background-size:cover;
     overflow: auto;
     padding: 10px;
 }
@@ -112,13 +114,13 @@
 }   
 .left-top .tab-pane {
     width: 50%;
-    color: #646566;
-    background-color: #010817;
+    color: #636666;
+    background-color: #000917;
 }
 
 .left-top .tab-pane.active {
-    background-color: #4456a4 ;
-    color: #c7c7c7;
+    background-color: #19263f ;
+    color: #c7c7c8;
 }
 
 .left-center {
@@ -167,10 +169,12 @@
     text-align: center;
     background-size: 100% 100%;
     cursor: pointer;
+    color:#656568;
 }
 
 .left-center .map-btns div.active {
     background-image: url(../img/top-bg.png);
+    color:#fff;
 }
 
 .left-center .table-item-contain {
@@ -244,7 +248,7 @@
     text-align: center;
     cursor: pointer;
     background-color: #020c1a;
-    color: #c7c7c7;
+    color: #656568;
 }
 
 .left-center .map-table-contain .map-table-btns div.active {
@@ -305,4 +309,16 @@
     right:80px;
     top:310px;
     height:1640px;
+}
+.rightThree img{
+    width: 665px;
+    display: block;
+    margin-bottom:50px;
+}
+.t_num i {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    background: url(../img/num.png) no-repeat;
+    background-position:0 0;
 }

@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>重保区左侧</title>
-    <style>
-        body,html{
-            text-align: center;
-            width:100%;
-            height:100%;
-            margin:0;
-            padding:0;
-            background-color:transparent;
-           /*background-color:rgba(0,0,0,.5);*/
-            oveflow:hidden;
-        }
-        #app{
-            height:100%;
-            width:100%;
-        }
-        [v-cloak] {
-            display: none;
-        }
-    </style>
-</head>
-<body style="overflow: hidden;">
-    <div id="app" style="padding-top:30px;" v-cloak>
-        
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>重保区左侧</title>
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/zbl.css">
+    </head>
+    <body style="overflow: hidden;">
+        <div id="zblApp" v-cloak>
+            <p class="nowTime">{{nowTime}}</p>
+            <p class="timeblew">
+                <span>{{nowDate}}</span>
+                <span>{{nowWeek}}</span>
+            </p>
+            <img class="ar" src="img/zblRight.png" />
+
+            <!-- <ul class="fir">
+                <li>
+                    <img src="le" />
+                    <div class='ri'>
+                        <p>1234</p>
+                        <p>小区总数</p>
+                    </div>
+                </li>
+            </ul> -->
+        </div>
+    </body>
+<!-- 基础组件 -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/ehcart.js"></script>
 <script type="text/javascript" src="js/polyfill.min.js"></script>
@@ -36,7 +36,6 @@
 <script type="text/javascript" src="js/qs.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/Config.js"></script>
-<script>
-
-</script>
+<!-- 业务组件 -->
+<script type="text/javascript" src="js/zbl.js"></script>
 </html>

@@ -40,7 +40,24 @@ var PeopleNumberByTime1 = {
         {
             Time: '12:14',
             Num: 14
-        }],
+        },
+        {
+            Time: '12:15',
+            Num: 10
+        },
+        {
+            Time: '12:16',
+            Num: 18
+        },
+        {
+            Time: '12:17',
+            Num: 8
+        },
+        {
+            Time: '12:18',
+            Num: 10
+        }
+    ],
         Yesterday: [{
             Time: '12:12',
             Num: 9
@@ -51,7 +68,24 @@ var PeopleNumberByTime1 = {
         {
             Time: '12:14',
             Num: 7
-        }]
+        },
+        {
+            Time: '12:15',
+            Num: 4
+        },
+        {
+            Time: '12:16',
+            Num: 13
+        },
+        {
+            Time: '12:17',
+            Num: 4
+        },
+        {
+            Time: '12:18',
+            Num: 12
+        }
+    ]
     }
 }
 
@@ -61,26 +95,60 @@ var PeopleNumberByTime2 = {
     data: {
         Today: [{
             Time: '12:15',
-            Num: 1
+            Num: 12
         }, {
             Time: '12:16',
-            Num: 2
+            Num: 6
+        },
+        {
+            Time: '12:17',
+            Num: 3
         },
         {
             Time: '12:18',
-            Num: 3
-        }],
+            Num: 8
+        },
+        {
+            Time: '12:19',
+            Num: 5
+        },
+        {
+            Time: '12:20',
+            Num: 11
+        },
+        {
+            Time: '12:21',
+            Num: 9
+        }
+    ],
         Yesterday: [{
             Time: '12:15',
             Num: 4
         }, {
             Time: '12:16',
-            Num: 5
+            Num: 12
+        },
+        {
+            Time: '12:17',
+            Num: 6
         },
         {
             Time: '12:18',
-            Num: 6
-        }]
+            Num: 8
+        },
+        {
+            Time: '12:19',
+            Num: 3
+        },
+        {
+            Time: '12:20',
+            Num: 10
+        },
+        {
+            Time: '12:21',
+            Num: 7
+        }
+    ]
     }
 }
 
@@ -88,13 +156,21 @@ var PeopleModelType = {
     success: true,
     code: 1000,
     data: [{
-        Name: '华为',
-        Num: 3
+        Name: '华为Mate30',
+        Num: 18
     },{
-        Name:'苹果',
-        Num:9
+        Name:'iphone 11',
+        Num:14
     },{
-        Name:'三星',
+        Name:'三星 S20',
+        Num:20
+    },
+    {
+        Name:'OPPO r17',
+        Num:16
+    },
+    {
+        Name:'华为Mate Xs',
         Num:20
     }]
 }
