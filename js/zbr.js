@@ -268,24 +268,7 @@ let clock = new Vue({
                     lineStyle: {
                         color: 'transparent'
                     },
-<<<<<<< Updated upstream
-                    textStyle: { // 图例项的文本样式。
-                        color:"#1f88c5",
-                        fontWeight: '700' // 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
-                    },
-                    itemStyle: { // 折线拐点标志的样式。
-                        normal: { // 普通状态时的样式
-                            lineStyle: {
-                                width: 0
-                            },
-                            opacity: 0.2
-                        },
-                    },
-                    areaStyle: {
-                        opacity: 0.7,
-=======
                     areaStyle:{
->>>>>>> Stashed changes
                         color: {
                             type: 'linear',
                             x: 0,
@@ -295,21 +278,12 @@ let clock = new Vue({
                             colorStops: [{
                                 offset: 0, color: '#007591' // 0% 处的颜色
                             }, {
-<<<<<<< Updated upstream
-                                offset: 1, color: '#043e90' // 100% 处的颜色
-                            }],
-                            globalCoord: false // 缺省为 false
-                        },
-                        shadowColor: 'rgba(0, 0, 0, 0.5)',
-                        shadowBlur: 10
-=======
                                 offset: 0.5, color: '#004e82' // 100% 处的颜色
                             },{
                                 offset: 1, color: '#043e90' // 100% 处的颜色
                             }],
                             global: false // 缺省为 false
                         }
->>>>>>> Stashed changes
                     },
                     
                     // areaStyle: {normal: {}},
