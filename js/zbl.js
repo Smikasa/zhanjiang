@@ -6,7 +6,9 @@ let zblVue = new Vue({
         nowWeek:'',
     },
     mounted() {
-        this.setNowTimes();
+        setInterval(() => {
+            this.setNowTimes();
+        }, 1000);
     },
     methods: {
         setNowTimes () {
