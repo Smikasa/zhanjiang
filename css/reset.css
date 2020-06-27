@@ -1,8 +1,17 @@
+
+/* 字体 */
+@font-face{
+    font-family: 'SimHei';
+    src : url('../font/simhei.ttf');
+}
+
+
 body,html{
     width:100%;
     height:100%;
     background-color:transparent;
     overflow: hidden;
+    font-family: 'SimHei',sans-serif;
 }
 
 body,html,p,ul,li {
