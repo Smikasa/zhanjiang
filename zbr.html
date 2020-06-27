@@ -17,10 +17,8 @@
                         <div class="total-title">{{allNum.name}}</div>
                         <div class="total-info">
                             <div class="am_num">
-                                <div id="total">
+                                <div id="total-text">
                                     <span class="t_num t_num1"></span>
-                                    
-                                     <!-- 9364564 -->
                                 </div>
                             </div>
                             <!-- <span class="total-number">{{allNum.number}}</span> -->
@@ -28,11 +26,17 @@
                     </div>
                 </div>
                 <div class="fr spread-contain">
-                    <div class="spread fl" v-for="item in spread">
+                    <div class="spread fl" v-for="(item,index) in spread" ::key="index">
                         <div class="spread-title">{{item.name}}</div>
                         <div class="spread-info">
-                            <span class="spread-number">{{item.Num}}</span>
-                            <span class="spread-per">({{item.Ratio}})</span>
+                            <div class="am_num">
+                                <div :id="'total'+index" style="overflow: hidden;">
+                                    <span class="t_num t_num1"></span>
+                                    <span class="spread-per t_text">({{item.Ratio}})</span>
+                                </div>
+                            </div>
+                            <!-- <span class="spread-number">{{item.Num}}</span> -->
+                            
                         </div>
                         
                         <div v-if="item.hasOwnProperty('Yesterday') && item.Yesterday">
@@ -49,7 +53,7 @@
                     <div class="top-title">人数曲线图</div>
                     <div>
                         <ul class="clearfix tab">
-                            <li class="tab-pane fl" :class= "[curPeopleNumber === 5 ?'active':'']"  @click="changCurPeopleNumber(5)">五分钟</li>
+                            <li class="tab-pane fl" :class= "[curPeopleNumber === 5 ?'active':'']"  @click="changCurPeopleNumber(5)">5分钟</li>
                             <li class="tab-pane fl" :class= "[curPeopleNumber === 15 ?'active':'']" @click="changCurPeopleNumber(15)">15分钟</li>
                         </ul>
                     </div>
@@ -78,6 +82,11 @@
                                 <div class="fl" :class="[curMapArea === 'china' ? 'active' : '']" @click="changSpreadMap('china')">境内人员分布</div>
                                 <div class="fl" :class="[curMapArea === 'world' ? 'active' : '']" @click="changSpreadMap('world')">境外人员分布</div>
                                 <div class="fl" :class="[curMapArea === 'province' ? 'active' : '']" @click="changSpreadMap('province')">省内人员分布</div>
+                            </div>
+                            <div class="totalPerson">
+                                <span>总人数</span>
+                                <span class="numT">{{totalPersonNum}}</span>
+                                <span>人</span>
                             </div>
                         </div>
                     </div>

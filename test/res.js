@@ -10,18 +10,18 @@ var AllPeopleNumber = {
         },
         venueOut: {
             Num: 22222,
-            Ratio: '30%',
-            Yesterday: '+100'
+            Ratio: '70%',
+            Yesterday: '+200'
         },
         churchyard: {
             Num: 33333,
-            Ratio: '30%',
-            Yesterday: '+100'
+            Ratio: '66%',
+            Yesterday: '-1200'
         },
         overseas: {
             Num: 44444,
-            Ratio: '30%',
-            Yesterday: '+100'
+            Ratio: '34%',
+            Yesterday: '+3200'
         }
     }
 }
@@ -156,20 +156,20 @@ var PeopleModelType = {
     success: true,
     code: 1000,
     data: [{
-        Name: '华为',
-        Num: 3
+        Name: '华为Mate30',
+        Num: 15
     }, {
-        Name: '苹果',
-        Num: 9
+        Name: 'oppor17',
+        Num: 13
     }, {
-        Name: '三星',
-        Num: 20
+        Name: 'iphone11',
+        Num: 14
     }, {
-        Name: '四星',
-        Num: 20
+        Name: '三星S20',
+        Num: 15
     }, {
-        Name: '五星',
-        Num: 20
+        Name: 'iphoneX',
+        Num: 12
     }]
 }
 

@@ -4,7 +4,7 @@ let clock = new Vue({
         actvie: 'actvie',
         // top 
         chartPeopleNumber: '',
-       
+        totalPersonNum:6000,
         curPeopleNumber: 5,
         allNum: {
             name: '实时总人数',
@@ -57,27 +57,31 @@ let clock = new Vue({
         },
         woman: {
             number: "40%",
-            name: "男性"
+            name: "女性"
         }
     },
     mounted () {
         this.init();
-        this.show_num1(123414451467890);
+        this.show_num1(9785676,'#total-text');
+        this.show_num1(34678,'#total0');
+        this.show_num1(872970,'#total1');
+        this.show_num1(169690,'#total2');
+        this.show_num1(27234,'#total3');
     },
     methods: {
-        show_num1:function(n){
-            var it = $(".t_num1 i");
+        show_num1:function(n,ele){
+            var it = $(ele + " .t_num1 i");
             var len = String(n).length;
             for(var i = 0; i < len; i++) {
                 if(it.length <= i) {
-                    $(".t_num1").append("<i></i>");
+                    $(ele + " .t_num1").append("<i></i>");
                 }
                 var num = String(n).charAt(i);
                 //根据数字图片的高度设置相应的值
                 var y = parseInt(num) ?  -(56 + (parseInt(num)-1) * 81.7) :"-793";
-                var obj = $(".t_num1 i").eq(i);
+                var obj = $(ele + " .t_num1 i").eq(i);
                obj.animate({
-                    backgroundPosition: '(-55px ' + String(y) + 'px)'
+                    backgroundPosition: '(-148px ' + String(y) + 'px)'
                 }, 'slow', 'swing', function() {});
             }
         },
@@ -322,7 +326,7 @@ let clock = new Vue({
                 lineStyle: {
                     normal: {
                         color: function (params) {
-                            return '#01a3ae'
+                            return '#01a3a'
                         },
                         width: 1.5,
                         opacity: 0.4,
@@ -331,16 +335,6 @@ let clock = new Vue({
                 },
 
                 data: []
-                /*  {
-                *   fromName: "安徽" // 出发地
-                *   toName: "山东" // 目的地
-                *   numValue: 5 // 数值
-                *   coords: [ // 坐标
-                *      [117.283042, 31.26119]
-                *      [118.000923, 36.275807]
-                *    ]
-                *    }
-               */
             }
                 //目的地
             this.mapOptionTo = {
@@ -369,7 +363,8 @@ let clock = new Vue({
                     //     offset: 1,
                     //     color: '#8af2e2'
                     // }]),
-                    color:'#a9c09a',
+                    color:'rgba(34,72,46,.7)',
+                    fontWeight:700,
                     // color: {
                     //     image: this.imgFrom, // 支持为 HTMLImageElement, HTMLCanvasElement，不支持路径字符串
                     //     repeat: 'repeat'
@@ -417,9 +412,9 @@ let clock = new Vue({
                 //     }
                 // },
                 itemStyle: {
-                    shadowBlur: 10,
+                    /* shadowBlur: 10,
                     shadowColor: 'rgba(25, 100, 150, 0.5)',
-                    shadowOffsetY: 5,
+                    shadowOffsetY: 5, */
                     // color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
                     //     offset: 0,
                     //     color: '#067691'
@@ -430,7 +425,7 @@ let clock = new Vue({
                     //     offset: 1,
                     //     color: '#00ffff'
                     // }]),
-                    color:'#8af2e2',
+                    color:'rgba(7,120,115,.7)',
                     // color: {
                     //     image: imgTo, // 支持为 HTMLImageElement, HTMLCanvasElement，不支持路径字符串
                     //     repeat: 'repeat'
@@ -470,7 +465,6 @@ let clock = new Vue({
 
                     }
                 },
-
                 // 地理坐标系组件
                 geo: {
                     map: 'world', // 地图类型
@@ -533,6 +527,7 @@ let clock = new Vue({
                     series: this.getMapSeries(area, data),
                 })
             } else if (area === "china") {
+                this.totalPersonNum = 6000;
                 let data = chinaData;
                 this.mapPeopleSpread.setOption({
                     geo: {
@@ -543,6 +538,7 @@ let clock = new Vue({
                 })
 
             } else if (area === 'province') {
+                this.totalPersonNum = 710;
                 let data = beijingData;
                 this.mapPeopleSpread.setOption({
                     geo: {
