@@ -576,7 +576,7 @@ let clock = new Vue({
                     roam: true, // 是否开启鼠标缩放和平移漫游
                     aspectScpale: 0.75,
                     center: [116.405285, 39.904989],
-                    zoom: 1,
+                    zoom: 1.1,
                     label: {
                         normal: {
                             show: false,
@@ -627,7 +627,7 @@ let clock = new Vue({
                         // map: 'china' | '四川'
                         // 必须要先引入了对应地图的js文件或者json文件，在这一步的时候，echarts会自动将对应的JS文件注入，地图才会显示.
                         map: 'world',
-                        center: [116.405285, 39.904989],
+                        center:[-3.581176,27.81331],
                     },
                     series: this.getMapSeries(area, data),
                 })
