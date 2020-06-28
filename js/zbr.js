@@ -428,7 +428,7 @@ let clock = new Vue({
                 lineStyle: {
                     normal: {
                         color: function (params) {
-                            return '#01a3a' // 飞机颜色
+                            return '#fff' // 飞机颜色
                         },
                         width: 1.5,
                         opacity: 0.4,
