@@ -10,7 +10,7 @@
 }
 .main-contain {
     width: 2100px;
-    padding: 82px 79px 0 252px;
+    padding: 87px 79px 80px 252px;
     line-height: 1;
 }
 
@@ -119,7 +119,7 @@
 }
 
 .left-top {
-    margin-bottom: 55px;
+    margin-bottom: 94px;
 }
 
 .left-top .top-title {
@@ -142,7 +142,7 @@
     line-height: 46px;
     font-size: 26px;
     width: 486px;
-    margin-bottom: 45px;
+    margin-bottom: 60px;
 }   
 .left-top .tab-pane {
     width: 50%;
@@ -156,7 +156,7 @@
 }
 
 .left-center {
-    margin-bottom: 70px;
+    margin-bottom: 75px;
 }
 
 .left-center .tab{
@@ -340,7 +340,7 @@
 .rightThree{
     position: absolute;
     right:80px;
-    top:310px;
+    top:325px;
     height:1640px;
 }
 .rightThree img{
