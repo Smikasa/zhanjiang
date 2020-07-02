@@ -2,21 +2,12 @@
     /* background-color: rgba(0,0,0,.5); */
     width:100%;
     height:100%;
-    background: url(../img/zblRight.png) no-repeat;
+    overflow: auto;
+    /* background: url(../img/zblRight.png) no-repeat; */
     background-size: cover;
     /* padding:60px 0 132px 40px; */
 }
-.nowTime{
-    font-size:79px;
-    color:#19adc8;
-    font-weight: 700;
-    padding:0 0 0 25px;
-}
-.timeblew{
-    font-size:26px;
-    color:#248ecc;
-    padding-left:27px;
-}
+
 .fir{
     list-style-type: none;
     overflow: hidden;
@@ -35,8 +26,93 @@
 .ar{
     width:100%;
 }
-.time{
-    position: relative;
-    left:58px;
-    top:50px;
+
+.main {
+    padding: 67px 287px 0 42px;
 }
+.main-top {
+    height: 109px;
+    margin-bottom: 80px;
+}
+.main-info {
+    height: 177px;   
+    position: relative; 
+}
+
+.main-center {
+    height: 969px;
+    background-color: blue;
+    margin-bottom: 102px;
+}
+
+.main-bottom {
+    height: 443px;
+    background-color: yellow;
+    margin-bottom: 161px;
+}
+
+
+.main-top .nowTime{
+    font-size:79px;
+    color:#19adc8;
+    font-weight: 700;
+    padding:0 0 0 25px;
+}
+.main-top .timeblew{
+    font-size:26px;
+    color:#248ecc;
+    padding-left:27px;
+}
+
+.main-info .main-info-contain {
+    margin-right: 48px;
+}
+
+.main-info .main-info-icon {
+    float: left;
+    width: 123px;
+    height: 123px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+} 
+
+.main-info .main-info-icon.main-info-icon-communities {
+    background-image: url(../img/communities.png);
+}
+.main-info .main-info-icon.main-info-icon-alarm {
+    background-image: url(../img/alarm.png);
+}
+.main-info .main-info-icon.main-info-icon-communities {
+    background-image: url(../img/communities.png);
+}
+.main-info .main-info-icon.main-info-icon-communities {
+    background-image: url(../img/communities.png);
+}
+.main-info .main-info-icon.main-info-icon-communities {
+    background-image: url(../img/communities.png);
+}
+
+.main-info .main-info-content {
+    float: left;
+} 
+
+.main-info-content .main-info-num {
+    font-size: 60px;
+    color: white;
+}
+
+.main-info-content .main-info-title {
+    font-size: 28px;
+    color:#248ecc ;
+}
+
+.main-info-bottom {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    background-size: 100% 100%;
+    bottom: 0px;
+    height:50px;
+    background-image: url(../img/top-bg.png);
+}
+

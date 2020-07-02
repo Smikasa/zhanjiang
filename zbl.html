@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #0d1827;">
 <head>
     <head>
         <meta charset="UTF-8">
@@ -8,26 +8,42 @@
         <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/zbl.css">
     </head>
-    <body style="overflow: hidden;">
+    <body>
         <div id="zblApp" v-cloak>
-            <div class="time">
-                <p class="nowTime">{{nowTime}}</p>
-                <p class="timeblew">
-                    <span>{{nowDate}}</span>
-                    <span>{{nowWeek}}</span>
-                </p>
-            </div>
-            <!-- <img class="ar" src="img/zblRight.png" /> -->
-
-            <!-- <ul class="fir">
-                <li>
-                    <img src="le" />
-                    <div class='ri'>
-                        <p>1234</p>
-                        <p>小区总数</p>
+            <div class="main">
+                <div class="main-top">
+                    <p class="nowTime">{{nowTime}}</p>
+                    <p class="timeblew">
+                        <span>{{nowDate}}</span>
+                        <span>{{nowWeek}}</span>
+                    </p>
+                </div>
+                <div class="main-info clearfix">
+                    <div class="fl main-info-contain" v-for="value in spread">
+                        <div class="main-info-icon" :class="[value.class]"></div>
+                        <div class="main-info-content clearfix">
+                            <div class="main-info-num">{{value.Num}}</div>
+                            <div class="main-info-title">{{value.name}}</div>
+                        </div>
                     </div>
-                </li>
-            </ul> -->
+                    <div class="main-info-bottom"></div>
+                </div>
+                <div class="main-center">
+                    <div class="main-center-title"></div>
+                    <div class="main-center-contain">
+                        <div class="main-center-contain-left">
+                            <div class="">
+
+                            </div>
+                        </div>
+                        <div class="main-center-contain-right">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="main-bottom"></div>
+            </div>
         </div>
     </body>
 <!-- 基础组件 -->
