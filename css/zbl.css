@@ -41,13 +41,12 @@
 
 .main-center {
     height: 969px;
-    background-color: blue;
     margin-bottom: 102px;
 }
 
 .main-bottom {
     height: 443px;
-    background-color: yellow;
+    /* background-color: yellow; */
     margin-bottom: 161px;
 }
 
@@ -106,6 +105,17 @@
     color:#248ecc ;
 }
 
+.main-center .main-center-title ul>li {
+    padding: 5px;
+    margin-right: 5px;
+    color: #248ecc ;
+}
+
+.main-center .main-center-contain-right .chart {
+    width: 495px;
+    height: 270px;
+    margin-bottom: 135px;
+}
 .main-info-bottom {
     position: absolute;
     width: 100%;
@@ -116,3 +126,7 @@
     background-image: url(../img/top-bg.png);
 }
 
+.main-bottom-contain .chart {
+    width: 195px;
+    height: 195px;
+}

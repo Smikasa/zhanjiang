@@ -29,23 +29,95 @@
                     <div class="main-info-bottom"></div>
                 </div>
                 <div class="main-center">
-                    <div class="main-center-title"></div>
-                    <div class="main-center-contain">
-                        <div class="main-center-contain-left">
-                            <div class="">
-
+                    <div class="main-center-title">
+                        <ul class="clearfix">
+                            <li class="fl">4G性能</li>
+                            <li class="fl">5G性能</li>
+                            <li class="fl">数据感知</li>
+                            <li class="fl">语音感知</li>
+                        </ul>
+                    </div>
+                    <div class="main-center-contain clearfix">
+                        <div class="main-center-contain-left fl">
+                            <div class="" v-for="i in 3">
+                                <span>icon</span>
+                                <span>VOLTE语言接通率</span>
+                                <span>12321</span>
+                            </div>
+                            <div class="" v-for="i in 3">
+                                <span>icon</span>
+                                <span>VOLTE语言接通率</span>
+                                <span>12321</span>
+                            </div>
+                            <div class="" v-for="i in 2">
+                                <span>icon</span>
+                                <span>VOLTE语言接通率</span>
+                                <span>12321</span>
                             </div>
                         </div>
-                        <div class="main-center-contain-right">
-
+                        <div class="main-center-contain-right fr">
+                            <div class="clearfix">
+                                <div class="fl">
+                                    <div>上下行流量+无线利用率</div>
+                                    <div class="chart" id="chartSX"></div>
+                                </div>
+                                <div class="fr">
+                                    <div>PRC连接数+峰值用户数+无线接通率</div>
+                                    <div class="chart" id="chartPRC"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="fl">
+                                    <div>无线掉线率+切换成功率+上行干扰电平</div>
+                                    <div class="chart" id="chartWX"></div>
+                                </div>
+                                <div class="fr">
+                                    <div>PRB上下行利用率</div>
+                                    <div class="chart" id="chartPRB"></div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="main-bottom"></div>
+                <div class="main-bottom">
+                    <div class="main-bottom-title">
+                        <ul class="clearfix">
+                            <li class="fl">PRB上行利用率</li>
+                            <li class="fl">2F</li>
+                        </ul>
+                    </div>
+                    <div class="main-bottom-contain clearfix">
+                        <div  class="fl">
+                            <div class="chart" id="chartPIE1"></div>
+                            <div>2F2号馆</div>
+                        </div>
+                        <div class="fl">
+                            <div class="chart" id="chartPIE2"></div>
+                            <div>2F2号馆</div>
+                        </div>
+                        <div class="fl">
+                            <div class="chart" id="chartPIE3"></div>
+                            <div>2F2号馆</div>
+                        </div>
+                        <div class="fl">
+                            <div class="chart" id="chartPIE4"></div>
+                            <div>2F2号馆</div>
+                        </div>
+                        <div class="fl">
+                            <div class="chart" id="chartPIE5"></div>
+                            <div>2F2号馆</div>
+                        </div>
+                        <div class="fl">
+                            <div class="chart" id="chartPIE6"></div>
+                            <div>2F2号馆</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
+<!--  数据 -->
+<script type="text/javascript" src="test/res-left.js"></script>
 <!-- 基础组件 -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/ehcart.js"></script>
