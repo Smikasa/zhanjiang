@@ -732,7 +732,7 @@ let zblVue = new Vue({
                     {
                         name: '',
                         type: 'pie',
-                        radius: ['58%', '70%'],
+                        radius: ['70%', '88%'],
                         avoidLabelOverlap: false,
                         // label: {
                         //     show: false,
