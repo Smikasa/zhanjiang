@@ -226,13 +226,19 @@
     margin-right: 163px;
 }
 
+.main-center .main-center-contain-right .chart-left-contain-top {
+    margin-right: 100px;
+    margin-bottom: 135px;
+}
+
+
 .main-center .main-center-contain-right .chart-left-contain {
     margin-right: 100px;
 }
 .main-center .main-center-contain-right .chart {
     width: 495px;
     height: 270px;
-    margin-bottom: 135px;
+    /* margin-bottom: 100px; */
 }
 .main-center .main-center-contain-right .chart-title {
     color: #fffFFF;
