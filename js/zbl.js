@@ -38,16 +38,16 @@ let zblVue = new Vue({
             }
         ],
         // 图标
-        chartSX:'',
-        chartPRC:'',
-        chartWX:'',
-        chartPRB:'',
-        chartPIE1:'',
-        chartPIE2:'',
-        chartPIE3:'',
-        chartPIE4:'',
-        chartPIE5:'',
-        chartPIE6:'',
+        chartSX: '',
+        chartPRC: '',
+        chartWX: '',
+        chartPRB: '',
+        chartPIE1: '',
+        chartPIE2: '',
+        chartPIE3: '',
+        chartPIE4: '',
+        chartPIE5: '',
+        chartPIE6: '',
     },
     mounted () {
         setInterval(() => {
@@ -72,7 +72,7 @@ let zblVue = new Vue({
             this.initChartPRB();
             this.axiosChartPRB();
             this.initChartPIE();
-            // this.axiosChartPIE();
+            this.axiosChartPIE();
         },
         setNowTimes () {
             let myDate = new Date()
@@ -116,7 +116,7 @@ let zblVue = new Vue({
                     text: '',//标题
                     subtext: ''// 副标题
                 },
-                textStyle:{
+                textStyle: {
                     fontFamily: 'SimHei'
                 },
                 tooltip: {
@@ -132,7 +132,7 @@ let zblVue = new Vue({
                     left: 0,
                     itemGap: 35,
                     inactiveColor: '#575b61',// 图例关闭时颜色
-                    data: ['今日人数', '昨日人数']
+                    data: ['上行', '下行', '无线利用率']
                 },
                 // dataZoom: {
                 //     show: false,
@@ -182,23 +182,33 @@ let zblVue = new Vue({
                 ],
                 series: [
                     {
-                        name: '今日人数',
+                        name: '上行',
                         type: 'bar',
                         // xAxisIndex: 1, // 对应坐标轴
-                        yAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
-                            color: '#4457a4'
+                            color: '#3b97cc'
                         },
                         data: []
                     },
                     {
-                        name: '昨日人数',
+                        name: '下行',
+                        type: 'bar',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#0076e3'
+                        },
+                        data: []
+                    },
+                    {
+                        name: '无线利用率',
                         type: 'line',
                         itemStyle: { // 折线拐点
-                            color: '#3ab6d2'
+                            color: '#09b395'
                         },
                         lineStyle: {// 折线
-                            color: '#3ab6d2'
+                            color: '#09b395'
                         },
                         symbol: "circle",// 实心圆
                         data: []
@@ -207,17 +217,19 @@ let zblVue = new Vue({
             };
             this.chartSX.setOption(option);
         },
-         /**
-         * 获取数据-上下行流量+无线利用率
-         */
+        /**
+        * 获取数据-上下行流量+无线利用率
+        */
         axiosChartSX (params) {
             this.chartSX.setOption({
-                // xAxis: [
-                //     {
-                //         data: chartData
-                //     }
-                // ],
+                xAxis: [
+                    {
+                        data: chartDataX
+                    }
+                ],
                 series: [{
+                    data: chartData
+                }, {
                     data: chartData
                 }, {
                     data: chartData
@@ -234,7 +246,7 @@ let zblVue = new Vue({
                     text: '',//标题
                     subtext: ''// 副标题
                 },
-                textStyle:{
+                textStyle: {
                     fontFamily: 'SimHei'
                 },
                 tooltip: {
@@ -250,7 +262,7 @@ let zblVue = new Vue({
                     left: 0,
                     itemGap: 35,
                     inactiveColor: '#575b61',// 图例关闭时颜色
-                    data: ['今日人数', '昨日人数']
+                    data: ['RC连接数', '峰值用户数', '无限连通率']
                 },
                 // dataZoom: {
                 //     show: false,
@@ -300,18 +312,30 @@ let zblVue = new Vue({
                 ],
                 series: [
                     {
-                        name: '今日人数',
+                        name: 'RC连接数',
                         type: 'bar',
                         // xAxisIndex: 1, // 对应坐标轴
                         yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
-                            color: '#4457a4'
+                            color: '#4896ee'
                         },
                         data: []
                     },
                     {
-                        name: '昨日人数',
+                        name: '峰值用户数',
+                        type: 'bar',
+                        itemStyle: { // 折线拐点
+                            color: '#189896'
+                        },
+                        lineStyle: {// 折线
+                            color: '#189896'
+                        },
+                        data: []
+                    },
+                    {
+                        name: '无限连通率',
                         type: 'line',
+                        areaStyle: {},
                         itemStyle: { // 折线拐点
                             color: '#3ab6d2'
                         },
@@ -325,17 +349,19 @@ let zblVue = new Vue({
             };
             this.chartPRC.setOption(option);
         },
-         /**
-         * 获取数据-PRC连接数+峰值用户数+无线接通率
-         */
+        /**
+        * 获取数据-PRC连接数+峰值用户数+无线接通率
+        */
         axiosChartPRC (params) {
             this.chartPRC.setOption({
-                // xAxis: [
-                //     {
-                //         data: chartData
-                //     }
-                // ],
+                xAxis: [
+                    {
+                        data: chartDataX
+                    }
+                ],
                 series: [{
+                    data: chartData
+                }, {
                     data: chartData
                 }, {
                     data: chartData
@@ -352,7 +378,7 @@ let zblVue = new Vue({
                     text: '',//标题
                     subtext: ''// 副标题
                 },
-                textStyle:{
+                textStyle: {
                     fontFamily: 'SimHei'
                 },
                 tooltip: {
@@ -368,7 +394,7 @@ let zblVue = new Vue({
                     left: 0,
                     itemGap: 35,
                     inactiveColor: '#575b61',// 图例关闭时颜色
-                    data: ['今日人数', '昨日人数']
+                    data: ['无线掉线率', '切换成功率', '上行干扰电平']
                 },
                 // dataZoom: {
                 //     show: false,
@@ -414,12 +440,26 @@ let zblVue = new Vue({
                             show: false     //去掉网格线
                         },
                         // boundaryGap: [0.2, 0.2]
-                    }
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // max: 1200,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    },
                 ],
                 series: [
                     {
-                        name: '今日人数',
-                        type: 'bar',
+                        name: '无线掉线率',
+                        type: 'line',
                         // xAxisIndex: 1, // 对应坐标轴
                         yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
@@ -428,8 +468,22 @@ let zblVue = new Vue({
                         data: []
                     },
                     {
-                        name: '昨日人数',
+                        name: '切换成功率',
                         type: 'line',
+                        areaStyle: {},
+                        itemStyle: { // 折线拐点
+                            color: '#3ab6d2'
+                        },
+                        lineStyle: {// 折线
+                            color: '#3ab6d2'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    },
+                    {
+                        name: '上行干扰电平',
+                        type: 'line',
+                        areaStyle: {},
                         itemStyle: { // 折线拐点
                             color: '#3ab6d2'
                         },
@@ -443,20 +497,22 @@ let zblVue = new Vue({
             };
             this.chartWX.setOption(option);
         },
-         /**
-         * 获取数据-无线掉线率+切换成功率+上行干扰电平
-         */
+        /**
+        * 获取数据-无线掉线率+切换成功率+ 上行干扰电平
+        */
         axiosChartWX (params) {
             this.chartWX.setOption({
-                // xAxis: [
-                //     {
-                //         data: chartData
-                //     }
-                // ],
+                xAxis: [
+                    {
+                        data: chartDataX
+                    }
+                ],
                 series: [{
-                    data: chartData
+                    data: chartData1
                 }, {
-                    data: chartData
+                    data: chartData2
+                }, {
+                    data: chartData3
                 }]
             })
         },
@@ -470,7 +526,7 @@ let zblVue = new Vue({
                     text: '',//标题
                     subtext: ''// 副标题
                 },
-                textStyle:{
+                textStyle: {
                     fontFamily: 'SimHei'
                 },
                 tooltip: {
@@ -486,7 +542,7 @@ let zblVue = new Vue({
                     left: 0,
                     itemGap: 35,
                     inactiveColor: '#575b61',// 图例关闭时颜色
-                    data: ['今日人数', '昨日人数']
+                    data: ['上行', '下行']
                 },
                 // dataZoom: {
                 //     show: false,
@@ -536,9 +592,10 @@ let zblVue = new Vue({
                 ],
                 series: [
                     {
-                        name: '今日人数',
-                        type: 'bar',
+                        name: '上行',
+                        type: 'line',
                         // xAxisIndex: 1, // 对应坐标轴
+                        areaStyle: {},
                         yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
                             color: '#4457a4'
@@ -546,8 +603,9 @@ let zblVue = new Vue({
                         data: []
                     },
                     {
-                        name: '昨日人数',
+                        name: '下行',
                         type: 'line',
+                        areaStyle: {},
                         itemStyle: { // 折线拐点
                             color: '#3ab6d2'
                         },
@@ -561,20 +619,20 @@ let zblVue = new Vue({
             };
             this.chartPRB.setOption(option);
         },
-         /**
-         * 获取数据-PRB上下行利用率
-         */
+        /**
+        * 获取数据-PRB上下行利用率
+        */
         axiosChartPRB (params) {
             this.chartPRB.setOption({
-                // xAxis: [
-                //     {
-                //         data: chartData
-                //     }
-                // ],
+                xAxis: [
+                    {
+                        data: chartDataX
+                    }
+                ],
                 series: [{
-                    data: chartData
+                    data: chartData1
                 }, {
-                    data: chartData
+                    data: chartData2
                 }]
             })
         },
@@ -589,38 +647,63 @@ let zblVue = new Vue({
             this.chartPIE5 = echarts.init(document.getElementById('chartPIE5'));
             this.chartPIE6 = echarts.init(document.getElementById('chartPIE6'));
             let option = {
-                tooltip: {
-                    trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 10,
-                    data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-                },
+                // tooltip: {
+                //     trigger: 'item',
+                //     formatter: '{a} <br/>{b}: {c} ({d}%)'
+                // },
+                tooltip: null,
+                animation :false,
+                legend: null,
                 series: [
                     {
-                        name: '访问来源',
+                        name: '',
                         type: 'pie',
-                        radius: ['50%', '70%'],
+                        radius: ['58%', '70%'],
                         avoidLabelOverlap: false,
-                        label: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            label: {
-                                show: true,
-                                fontSize: '30',
-                                fontWeight: 'bold'
-                            }
-                        },
+                        // label: {
+                        //     show: false,
+                        //     position: 'center'
+                        // },
+                        // emphasis: {
+                        //     label: {
+                        //         show: true,
+                        //         fontSize: '30',
+                        //         fontWeight: 'bold'
+                        //     }
+                        // },
                         labelLine: {
                             show: false
                         },
                         data: [
-                            {value: 335, name: '直接访问'},
-                            {value: 310, name: '邮件营销'},
+                            {
+                                itemStyle: {
+                                    color:'#0079b7',
+                                },
+                                selected:false,
+                                label:{
+                                    position:'center',
+                                    formatter: '{d}%',
+                                    color:"#fff",
+                                    fontSize:28,
+                                },
+                                value: 40.21, 
+                                name: '底色'
+                            },
+                            {
+                                markPoint:{
+                                    itemStyle: {
+                                        color:'#0079b7',
+                                        barBorderRadius:23,
+                                    },
+                                },
+                                itemStyle: {
+                                    color:'#01283d',
+                                    borderColor:"#0079b7",
+                                    borderWidth:1,
+                                },
+                                value: 59.79, 
+                                name: '底色'
+                            },
                         ]
                     }
                 ]
@@ -632,12 +715,80 @@ let zblVue = new Vue({
             this.chartPIE5.setOption(option);
             this.chartPIE6.setOption(option);
         },
-         /**
-         * 获取数据-饼图组
-         */
+        /**
+        * 获取数据-饼图组
+        */
         axiosChartPIE (params) {
-            this.chartPIE1.setOption(option);
-            this.chartPIE2.setOption(option);
+            this.chartPIE1.setOption({series: [
+                {
+                    data: [
+                        {
+                            itemStyle: {
+                                color:'#0079b7',
+                            },
+                            selected:false,
+                            label:{
+                                position:'center',
+                                formatter: '{d}%',
+                                color:"#fff",
+                                fontSize:28,
+                            },
+                            value: pie1, 
+                            name: '底色'
+                        },
+                        {
+                            markPoint:{
+                                itemStyle: {
+                                    color:'#0079b7',
+                                    barBorderRadius:23,
+                                },
+                            },
+                            itemStyle: {
+                                color:'#01283d',
+                                borderColor:"#0079b7",
+                                borderWidth:1,
+                            },
+                            value: pie2, 
+                            name: '底色'
+                        },
+                    ]
+                }
+            ]});
+            this.chartPIE2.setOption({series: [
+                {
+                    data: [
+                        {
+                            itemStyle: {
+                                color:'#0079b7',
+                            },
+                            selected:false,
+                            label:{
+                                position:'center',
+                                formatter: '{d}%',
+                                color:"#fff",
+                                fontSize:28,
+                            },
+                            value: pie3, 
+                            name: '底色'
+                        },
+                        {
+                            markPoint:{
+                                itemStyle: {
+                                    color:'#0079b7',
+                                    barBorderRadius:23,
+                                },
+                            },
+                            itemStyle: {
+                                color:'#01283d',
+                                borderColor:"#0079b7",
+                                borderWidth:1,
+                            },
+                            value: pie4, 
+                            name: '底色'
+                        },
+                    ]
+                }
+            ]});
             this.chartPIE3.setOption(option);
             this.chartPIE4.setOption(option);
             this.chartPIE5.setOption(option);
