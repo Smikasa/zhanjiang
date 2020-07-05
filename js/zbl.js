@@ -24,17 +24,17 @@ let zblVue = new Vue({
                 id: 'churchyard',
                 name: '性能预警数',
                 Num: 0,
-                class: 'main-info-icon-communities',
+                class: 'main-info-icon-communities1',
             }, {
                 id: 'overseas',
                 name: '工单总数',
                 Num: 0,
-                class: 'main-info-icon-communities',
+                class: 'main-info-icon-communities2',
             }, {
                 id: 'venueIn',
                 name: '到岗人员数',
                 Num: 0,
-                class: 'main-info-icon-communities',
+                class: 'main-info-icon-communities3',
             }
         ],
         // 图标

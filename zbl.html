@@ -31,29 +31,89 @@
                 <div class="main-center">
                     <div class="main-center-title">
                         <ul class="clearfix">
-                            <li class="fl">4G性能</li>
+                            <li class="fl active">
+                                4G性能
+                               <img src="img/yelloLog.png" />
+                            </li>
                             <li class="fl">5G性能</li>
                             <li class="fl">数据感知</li>
                             <li class="fl">语音感知</li>
+                            <li class="f1 r1">
+                                <select>
+                                    <option>颗粒度选择</option>
+                                </select>
+                            </li>
                         </ul>
                     </div>
                     <div class="main-center-contain clearfix">
                         <div class="main-center-contain-left fl">
-                            <div class="" v-for="i in 3">
-                                <span>icon</span>
-                                <span>VOLTE语言接通率</span>
-                                <span>12321</span>
-                            </div>
-                            <div class="" v-for="i in 3">
-                                <span>icon</span>
-                                <span>VOLTE语言接通率</span>
-                                <span>12321</span>
-                            </div>
-                            <div class="" v-for="i in 2">
-                                <span>icon</span>
-                                <span>VOLTE语言接通率</span>
-                                <span>12321</span>
-                            </div>
+                            <ul class="zcl" style="margin-top: 52px;">
+                                <li>
+                                    <img class="list-icon" src="img/ICON1.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE语音话务量</span>
+                                        <span class="list-data">12321</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON2.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE语音话接通率</span>
+                                        <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON3.png"/>
+                                    <p class="zl-box">
+                                    <span class="list-name">VOLTE语音掉线率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul class="zcl">
+                                <li>
+                                    <img class="list-icon" src="img/ICON4.png"/>
+                                    <p class="zl-box">
+                                    <span class="list-name">VOLTE视频话务量</span>
+                                    <span class="list-data">12321</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON5.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE视频接通率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON6.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE视频掉线率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul class="zcl">
+                                <li>
+                                    <img class="list-icon" src="img/ICON7.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">SRVCC切换成功率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON8.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">PDCCH信道CCE利用率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                            </ul>
                         </div>
                         <div class="main-center-contain-right fr">
                             <div class="clearfix">
@@ -81,7 +141,7 @@
                 </div>
                 <div class="main-bottom">
                     <div class="main-bottom-title">
-                        <ul class="clearfix">
+                        <ul class="clearfix" id="zlbb">
                             <li class="fl">PRB上行利用率</li>
                             <li class="fl">2F</li>
                         </ul>

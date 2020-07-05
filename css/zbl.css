@@ -6,6 +6,9 @@
     /* background: url(../img/zblRight.png) no-repeat; */
     background-size: cover;
     /* padding:60px 0 132px 40px; */
+    background: url(../img/bg.png) no-repeat;
+    background-size:cover;
+    overflow: auto;
 }
 
 .fir{
@@ -76,19 +79,29 @@
 } 
 
 .main-info .main-info-icon.main-info-icon-communities {
-    background-image: url(../img/communities.png);
+    background-image: url(../img/zll4.png);
+    background-size: 130%;
+    background-position: -12px -16px;
 }
 .main-info .main-info-icon.main-info-icon-alarm {
-    background-image: url(../img/alarm.png);
+    background-image: url(../img/zll2.png);
+    background-size: 130%;
+    background-position: -12px -16px;
 }
-.main-info .main-info-icon.main-info-icon-communities {
-    background-image: url(../img/communities.png);
+.main-info .main-info-icon.main-info-icon-communities1 {
+    background-image: url(../img/zll5.png);
+    background-size: 130%;
+    background-position: -12px -25px;
 }
-.main-info .main-info-icon.main-info-icon-communities {
-    background-image: url(../img/communities.png);
+.main-info .main-info-icon.main-info-icon-communities2 {
+    background-image: url(../img/zll3.png);
+    background-size: 130%;
+    background-position: -12px -16px;
 }
-.main-info .main-info-icon.main-info-icon-communities {
-    background-image: url(../img/communities.png);
+.main-info .main-info-icon.main-info-icon-communities3 {
+    background-image: url(../img/zll1.png);
+    background-size: 130%;
+    background-position: -12px -16px;
 }
 
 .main-info .main-info-content {
@@ -104,13 +117,114 @@
     font-size: 28px;
     color:#248ecc ;
 }
-
-.main-center .main-center-title ul>li {
-    padding: 5px;
-    margin-right: 5px;
-    color: #248ecc ;
+.main-center .main-center-title ul{
+    background: url(../img/all6.png);
+    background-size: 100%;
+    list-style-type: none;
+    padding-top:30px;
+    padding-bottom:24px;
+    padding-left:45px;
+    position: relative;
 }
-
+.main-center .main-center-title ul>li {
+    margin-right: 85px;
+    font-size: 30px;
+    color: #154b65;
+    font-weight:700;
+    position: relative;
+}
+.main-center .main-center-title ul>li.r1{
+    right: -516px;
+    bottom: 6px;
+}
+.main-center .main-center-title ul>li.r1 select{
+    color:#876127;
+    font-size:30px;
+    border:none;
+    background-color:transparent ;
+}
+.main-center .main-center-title ul>li img{
+    position: absolute;
+    bottom: -17px;
+    left:50%;
+    transform: translateX(-50%);
+    width:80%;
+}
+.main-center .main-center-title ul>li.active{
+    color:#fff;
+}
+.main-center-contain .main-center-contain-left ul.zcl{
+    list-style-type: none;
+    background: url('../img/1-2.png');
+    background-size: 100%;
+    width:475px;
+    height:235px;
+    margin-bottom: 88px;
+    padding:20px 0;
+    box-sizing: border-box;
+}
+.main-center-contain .main-center-contain-left ul.zcl>li{
+    height:50px;
+    padding-left:15px;
+    margin-bottom:30px;
+    display: block;
+    overflow: hidden;
+}
+.main-center-contain .main-center-contain-left ul.zcl>li:last-child{
+    margin-bottom: 0;
+}
+.main-center-contain .main-center-contain-left ul.zcl>li span{
+    display: inline-block;
+}
+.main-center-contain .main-center-contain-left ul.zcl>li .list-icon{
+    width: 46px;
+    height:46px;
+    float: left;
+    vertical-align: middle;
+}
+.zl-box{
+    float:left;
+    width:395px;
+    height: 46px;
+    line-height: 20px;
+    background: url(../img/zllbg.png) no-repeat;
+    background-size: 100%;
+    margin-left: 15px;
+    vertical-align: middle;
+    margin-top: 5px;
+    padding:10px 0 10px 8px;
+    box-sizing: border-box;
+}
+.list-name{
+    font-size:25px;
+    color:#abadc1;
+}
+.list-data{
+    font-size:25px;
+    color:#fff;
+    font-weight: 700;
+    float: right;
+    margin-right: 42px;
+}
+.main-center-contain .main-center-contain-left ul.zcl:last-child{
+    height:176px;
+}
+#zlbb{
+    width: 100%;
+    list-style-type: none;
+    background: url(../img/all6.png) no-repeat;
+    background-size: 100%;
+    padding-left:65px;
+    height:80px;
+    margin-bottom: 90px;
+    line-height: 80px;
+}
+#zlbb >li{
+    font-size:30px;
+    color:#d19328;
+    font-weight: 700;
+    margin-right: 163px;
+}
 .main-center .main-center-contain-right .chart {
     width: 495px;
     height: 270px;
