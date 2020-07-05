@@ -335,7 +335,21 @@ let zblVue = new Vue({
                     {
                         name: '无限连通率',
                         type: 'line',
-                        areaStyle: {},
+                        areaStyle: {
+                            color:{
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#4c94ae' // 0% 处的颜色
+                                },{
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
                         itemStyle: { // 折线拐点
                             color: '#3ab6d2'
                         },
@@ -463,14 +477,32 @@ let zblVue = new Vue({
                         // xAxisIndex: 1, // 对应坐标轴
                         yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
-                            color: '#4457a4'
+                            color: '#aefbbe'
+                        },
+                        lineStyle: {// 折线
+                            color: '#3ab6d2',
+                            type:"dotted"
                         },
                         data: []
                     },
                     {
                         name: '切换成功率',
                         type: 'line',
-                        areaStyle: {},
+                        areaStyle: {
+                            color:{
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#238aaf' // 0% 处的颜色
+                                },{
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
                         itemStyle: { // 折线拐点
                             color: '#3ab6d2'
                         },
@@ -483,7 +515,21 @@ let zblVue = new Vue({
                     {
                         name: '上行干扰电平',
                         type: 'line',
-                        areaStyle: {},
+                        areaStyle: {
+                            color:{
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#238b8f' // 0% 处的颜色
+                                },{
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
                         itemStyle: { // 折线拐点
                             color: '#3ab6d2'
                         },
@@ -595,7 +641,21 @@ let zblVue = new Vue({
                         name: '上行',
                         type: 'line',
                         // xAxisIndex: 1, // 对应坐标轴
-                        areaStyle: {},
+                        areaStyle: {
+                            color:{
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#0c324f' // 0% 处的颜色
+                                },{
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
                         yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
                             color: '#4457a4'
@@ -605,7 +665,21 @@ let zblVue = new Vue({
                     {
                         name: '下行',
                         type: 'line',
-                        areaStyle: {},
+                        areaStyle: {
+                            color:{
+                                type: 'linear',
+                                // x: 0,
+                                // y: 0,
+                                // x2: 0,
+                                // y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#0a4051' // 0% 处的颜色
+                                },{
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
                         itemStyle: { // 折线拐点
                             color: '#3ab6d2'
                         },
