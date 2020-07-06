@@ -48,6 +48,8 @@ let zblVue = new Vue({
         chartPIE4: '',
         chartPIE5: '',
         chartPIE6: '',
+        isShowSelect:false,
+        isShowSelectBottom:false
     },
     mounted () {
         setInterval(() => {
@@ -863,10 +865,146 @@ let zblVue = new Vue({
                     ]
                 }
             ]});
-            this.chartPIE3.setOption(option);
-            this.chartPIE4.setOption(option);
-            this.chartPIE5.setOption(option);
-            this.chartPIE6.setOption(option);
+            this.chartPIE3.setOption({series: [
+                {
+                    data: [
+                        {
+                            itemStyle: {
+                                color:'#0079b7',
+                            },
+                            selected:false,
+                            label:{
+                                position:'center',
+                                formatter: '{d}%',
+                                color:"#fff",
+                                fontSize:28,
+                            },
+                            value: pie1, 
+                            name: '底色'
+                        },
+                        {
+                            markPoint:{
+                                itemStyle: {
+                                    color:'#0079b7',
+                                    barBorderRadius:23,
+                                },
+                            },
+                            itemStyle: {
+                                color:'#01283d',
+                                borderColor:"#0079b7",
+                                borderWidth:1,
+                            },
+                            value: pie2, 
+                            name: '底色'
+                        },
+                    ]
+                }
+            ]});
+            this.chartPIE4.setOption({series: [
+                {
+                    data: [
+                        {
+                            itemStyle: {
+                                color:'#0079b7',
+                            },
+                            selected:false,
+                            label:{
+                                position:'center',
+                                formatter: '{d}%',
+                                color:"#fff",
+                                fontSize:28,
+                            },
+                            value: pie1, 
+                            name: '底色'
+                        },
+                        {
+                            markPoint:{
+                                itemStyle: {
+                                    color:'#0079b7',
+                                    barBorderRadius:23,
+                                },
+                            },
+                            itemStyle: {
+                                color:'#01283d',
+                                borderColor:"#0079b7",
+                                borderWidth:1,
+                            },
+                            value: pie2, 
+                            name: '底色'
+                        },
+                    ]
+                }
+            ]});
+            this.chartPIE5.setOption({series: [
+                {
+                    data: [
+                        {
+                            itemStyle: {
+                                color:'#0079b7',
+                            },
+                            selected:false,
+                            label:{
+                                position:'center',
+                                formatter: '{d}%',
+                                color:"#fff",
+                                fontSize:28,
+                            },
+                            value: pie1, 
+                            name: '底色'
+                        },
+                        {
+                            markPoint:{
+                                itemStyle: {
+                                    color:'#0079b7',
+                                    barBorderRadius:23,
+                                },
+                            },
+                            itemStyle: {
+                                color:'#01283d',
+                                borderColor:"#0079b7",
+                                borderWidth:1,
+                            },
+                            value: pie2, 
+                            name: '底色'
+                        },
+                    ]
+                }
+            ]});
+            this.chartPIE6.setOption({series: [
+                {
+                    data: [
+                        {
+                            itemStyle: {
+                                color:'#0079b7',
+                            },
+                            selected:false,
+                            label:{
+                                position:'center',
+                                formatter: '{d}%',
+                                color:"#fff",
+                                fontSize:28,
+                            },
+                            value: pie1, 
+                            name: '底色'
+                        },
+                        {
+                            markPoint:{
+                                itemStyle: {
+                                    color:'#0079b7',
+                                    barBorderRadius:23,
+                                },
+                            },
+                            itemStyle: {
+                                color:'#01283d',
+                                borderColor:"#0079b7",
+                                borderWidth:1,
+                            },
+                            value: pie2, 
+                            name: '底色'
+                        },
+                    ]
+                }
+            ]});
             this.chartPRB.setOption({
                 // xAxis: [
                 //     {
@@ -880,6 +1018,20 @@ let zblVue = new Vue({
                 }]
             })
         },
+        /**
+     * 右侧筛选栏点击select弹出公共事件
+     */
+    controlSelct(){
+         this.isShowSelect = !this.isShowSelect;
+    },
+    /**
+     * 点击其他区域select收起公共事件
+     */
+    controlSelctBottom(){
+        this.isShowSelectBottom = !this.isShowSelectBottom;
+        console.log(this.isShowSelectBottom)
+        
+    }
 
     },
 })

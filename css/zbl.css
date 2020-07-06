@@ -287,3 +287,63 @@
 .main-bottom-contain .fl:last-child{
     margin-right: 0;
 }
+
+
+.select {
+    width: 160px;
+    display: inline-block;
+    height: 40px;
+    position: relative;
+}
+.select-name {
+    cursor: pointer;
+    height: 40px;
+    color: #d19328;
+}
+.select-ul {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    border: 1px solid black;
+    width: 160px;
+    text-align: center;
+}
+.select-ul .select-li {
+    font-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+    color: #175773;
+}
+
+.select-ul .select-li:hover {
+    color: white;
+}
+
+.main-bottom .select {
+    width: 160px;
+    display: inline-block;
+    height: 80px;
+    position: relative;
+}
+.main-bottom .select-name {
+    cursor: pointer;
+    height: 80px;
+    color: #d19328;
+}
+.main-bottom .select-ul {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    border: 1px solid black;
+    width: 160px;
+    text-align: center;
+}
+.main-bottom .select-ul .select-li {
+    font-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.main-bottom .select-ul .select-li:hover {
+    color: white;
+}

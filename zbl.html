@@ -7,6 +7,9 @@
         <title>重保区左侧</title>
         <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/zbl.css">
+        <style>
+          
+        </style>
     </head>
     <body>
         <div id="zblApp" v-cloak>
@@ -39,9 +42,20 @@
                             <li class="fl">数据感知</li>
                             <li class="fl">语音感知</li>
                             <li class="f1 r1">
-                                <select>
-                                    <option>颗粒度选择</option>
-                                </select>
+                                <div class="select">
+                                    <div class="select-name" @click="controlSelct">颗粒度选择</div>
+                                    <div class="select-ul" v-show="isShowSelect">
+                                        <div class="select-li" @click="controlSelct">
+                                            颗粒度选择
+                                        </div>
+                                        <div class="select-li" @click="controlSelct">
+                                            颗粒度选择
+                                        </div>
+                                        <div class="select-li" @click="controlSelct">
+                                            颗粒度选择
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -143,7 +157,16 @@
                     <div class="main-bottom-title">
                         <ul class="clearfix" id="zlbb">
                             <li>PRB上行利用率</li>
-                            <li >2F</li>
+                            <li >
+                                <div class="select">
+                                    <div class="select-name" @click="controlSelctBottom">2F</div>
+                                    <div class="select-ul" v-show="isShowSelectBottom">
+                                        <div class="select-li" @click="controlSelctBottom">1F</div>
+                                        <div class="select-li" @click="controlSelctBottom">2F</div>
+                                        <div class="select-li" @click="controlSelctBottom">3F</div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div class="main-bottom-contain clearfix">

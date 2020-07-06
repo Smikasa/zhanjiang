@@ -47,6 +47,27 @@ div{
 }
 
 
+select {
+    appearance: none;
+    -webkit-appearance:none;
+    border: 0;
+    background: transparent;
+}
+
+select:focus {
+    border: 0;
+    outline: none;
+}
+
+select option {
+    font-size: 12px;
+    color: red;
+    height: 36px;
+    line-height: 15px;
+    text-align: center;
+    background:hotpink;
+}
+
        
 .table-item-contain::-webkit-scrollbar
 {
