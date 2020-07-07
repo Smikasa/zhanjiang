@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        html,body{
+            width:7000px;
+            height:2100px;
+            background-color: transparent;
+            overflow: hidden;
+        }
+        .ifr{
+            width:2100px;
+            height:100%;
+            overflow: hidden;
+        }
+        .ifr iframe{
+            width:100%;
+            height:100%;
+            /* vertical-align:text-top(text-bottom); */
+        }
+    </style>
+</head>
+<body>
+    <div class="ifr">
+        <iframe src="zbl.html" frameborder="0"></iframe>
+    </div>
+    <div class="ifr" style="width:2900px;height:100%;">
+        <iframe src="https://www.baidu.com/" frameborder="0"></iframe>
+    </div>
+    <div class="ifr">
+        <iframe src="zbr.html" frameborder="0"></iframe>
+    </div>
+</body>
+</html>
