@@ -37,7 +37,7 @@ let zblVue = new Vue({
                 class: 'main-info-icon-communities3',
             }
         ],
-        // 图标
+        // 4g
         chartSX: '',
         chartPRC: '',
         chartWX: '',
@@ -48,8 +48,20 @@ let zblVue = new Vue({
         chartPIE4: '',
         chartPIE5: '',
         chartPIE6: '',
-        isShowSelect:false,
-        isShowSelectBottom:false
+
+        // 5g
+        chart5G: '',
+        chartTB: '',
+        chartPRC2: '',
+        chartPUPD: '',
+        chartWXQHSX: '',
+        chartPRB2: '',
+
+
+        isShowSelect: false,
+        isShowSelectBottom: false,
+        // tabs 
+        curTabsName: '1',
     },
     mounted () {
         setInterval(() => {
@@ -64,7 +76,7 @@ let zblVue = new Vue({
             this.show_num1(872970, '#total1');
             this.show_num1(169690, '#total2');
             this.show_num1(27234, '#total3');
-            // 图表
+            // 4g图表
             this.initChartSX();
             this.axiosChartSX();
             this.initChartPRC();
@@ -75,6 +87,23 @@ let zblVue = new Vue({
             this.axiosChartPRB();
             this.initChartPIE();
             this.axiosChartPIE();
+            // 5g
+            this.initChart5G();
+            this.axiosChart5G();
+            this.initChartTB();
+            this.axiosChartTB();
+            this.initChartPRC2();
+            this.axiosChartPRC2();
+            this.initChartPUPD();
+            this.axiosChartPUPD();
+            this.initChartWXQHSX();
+            this.axiosChartWXQHSX();
+            this.initChartPRB2();
+            this.axiosChartPRB2();
+
+        },
+        tabsChange (name) {
+            this.curTabsName = name
         },
         setNowTimes () {
             let myDate = new Date()
@@ -338,7 +367,7 @@ let zblVue = new Vue({
                         name: '无限连通率',
                         type: 'line',
                         areaStyle: {
-                            color:{
+                            color: {
                                 type: 'linear',
                                 x: 0,
                                 y: 0,
@@ -346,7 +375,7 @@ let zblVue = new Vue({
                                 y2: 1,
                                 colorStops: [{
                                     offset: 0, color: '#4c94ae' // 0% 处的颜色
-                                },{
+                                }, {
                                     offset: 1, color: 'transparent' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
@@ -483,7 +512,7 @@ let zblVue = new Vue({
                         },
                         lineStyle: {// 折线
                             color: '#3ab6d2',
-                            type:"dotted"
+                            type: "dotted"
                         },
                         data: []
                     },
@@ -491,7 +520,7 @@ let zblVue = new Vue({
                         name: '切换成功率',
                         type: 'line',
                         areaStyle: {
-                            color:{
+                            color: {
                                 type: 'linear',
                                 x: 0,
                                 y: 0,
@@ -499,7 +528,7 @@ let zblVue = new Vue({
                                 y2: 1,
                                 colorStops: [{
                                     offset: 0, color: '#238aaf' // 0% 处的颜色
-                                },{
+                                }, {
                                     offset: 1, color: 'transparent' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
@@ -518,7 +547,7 @@ let zblVue = new Vue({
                         name: '上行干扰电平',
                         type: 'line',
                         areaStyle: {
-                            color:{
+                            color: {
                                 type: 'linear',
                                 x: 0,
                                 y: 0,
@@ -526,7 +555,7 @@ let zblVue = new Vue({
                                 y2: 1,
                                 colorStops: [{
                                     offset: 0, color: '#238b8f' // 0% 处的颜色
-                                },{
+                                }, {
                                     offset: 1, color: 'transparent' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
@@ -644,7 +673,7 @@ let zblVue = new Vue({
                         type: 'line',
                         // xAxisIndex: 1, // 对应坐标轴
                         areaStyle: {
-                            color:{
+                            color: {
                                 type: 'linear',
                                 x: 0,
                                 y: 0,
@@ -652,7 +681,7 @@ let zblVue = new Vue({
                                 y2: 1,
                                 colorStops: [{
                                     offset: 0, color: '#0c324f' // 0% 处的颜色
-                                },{
+                                }, {
                                     offset: 1, color: 'transparent' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
@@ -668,7 +697,7 @@ let zblVue = new Vue({
                         name: '下行',
                         type: 'line',
                         areaStyle: {
-                            color:{
+                            color: {
                                 type: 'linear',
                                 // x: 0,
                                 // y: 0,
@@ -676,7 +705,7 @@ let zblVue = new Vue({
                                 // y2: 1,
                                 colorStops: [{
                                     offset: 0, color: '#0a4051' // 0% 处的颜色
-                                },{
+                                }, {
                                     offset: 1, color: 'transparent' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
@@ -728,7 +757,7 @@ let zblVue = new Vue({
                 //     formatter: '{a} <br/>{b}: {c} ({d}%)'
                 // },
                 tooltip: null,
-                animation :false,
+                animation: false,
                 legend: null,
                 series: [
                     {
@@ -753,31 +782,31 @@ let zblVue = new Vue({
                         data: [
                             {
                                 itemStyle: {
-                                    color:'#0079b7',
+                                    color: '#0079b7',
                                 },
-                                selected:false,
-                                label:{
-                                    position:'center',
+                                selected: false,
+                                label: {
+                                    position: 'center',
                                     formatter: '{d}%',
-                                    color:"#fff",
-                                    fontSize:28,
+                                    color: "#fff",
+                                    fontSize: 28,
                                 },
-                                value: 40.21, 
+                                value: 40.21,
                                 name: '底色'
                             },
                             {
-                                markPoint:{
+                                markPoint: {
                                     itemStyle: {
-                                        color:'#0079b7',
-                                        barBorderRadius:23,
+                                        color: '#0079b7',
+                                        barBorderRadius: 23,
                                     },
                                 },
                                 itemStyle: {
-                                    color:'#01283d',
-                                    borderColor:"#0079b7",
-                                    borderWidth:1,
+                                    color: '#01283d',
+                                    borderColor: "#0079b7",
+                                    borderWidth: 1,
                                 },
-                                value: 59.79, 
+                                value: 59.79,
                                 name: '底色'
                             },
                         ]
@@ -795,216 +824,228 @@ let zblVue = new Vue({
         * 获取数据-饼图组
         */
         axiosChartPIE (params) {
-            this.chartPIE1.setOption({series: [
-                {
-                    data: [
-                        {
-                            itemStyle: {
-                                color:'#0079b7',
-                            },
-                            selected:false,
-                            label:{
-                                position:'center',
-                                formatter: '{d}%',
-                                color:"#fff",
-                                fontSize:28,
-                            },
-                            value: pie1, 
-                            name: '底色'
-                        },
-                        {
-                            markPoint:{
+            this.chartPIE1.setOption({
+                series: [
+                    {
+                        data: [
+                            {
                                 itemStyle: {
-                                    color:'#0079b7',
-                                    barBorderRadius:23,
+                                    color: '#0079b7',
                                 },
+                                selected: false,
+                                label: {
+                                    position: 'center',
+                                    formatter: '{d}%',
+                                    color: "#fff",
+                                    fontSize: 28,
+                                },
+                                value: pie1,
+                                name: '底色'
                             },
-                            itemStyle: {
-                                color:'#01283d',
-                                borderColor:"#0079b7",
-                                borderWidth:1,
-                            },
-                            value: pie2, 
-                            name: '底色'
-                        },
-                    ]
-                }
-            ]});
-            this.chartPIE2.setOption({series: [
-                {
-                    data: [
-                        {
-                            itemStyle: {
-                                color:'#0079b7',
-                            },
-                            selected:false,
-                            label:{
-                                position:'center',
-                                formatter: '{d}%',
-                                color:"#fff",
-                                fontSize:28,
-                            },
-                            value: pie3, 
-                            name: '底色'
-                        },
-                        {
-                            markPoint:{
+                            {
+                                markPoint: {
+                                    itemStyle: {
+                                        color: '#0079b7',
+                                        barBorderRadius: 23,
+                                    },
+                                },
                                 itemStyle: {
-                                    color:'#0079b7',
-                                    barBorderRadius:23,
+                                    color: '#01283d',
+                                    borderColor: "#0079b7",
+                                    borderWidth: 1,
                                 },
+                                value: pie2,
+                                name: '底色'
                             },
-                            itemStyle: {
-                                color:'#01283d',
-                                borderColor:"#0079b7",
-                                borderWidth:1,
-                            },
-                            value: pie4, 
-                            name: '底色'
-                        },
-                    ]
-                }
-            ]});
-            this.chartPIE3.setOption({series: [
-                {
-                    data: [
-                        {
-                            itemStyle: {
-                                color:'#0079b7',
-                            },
-                            selected:false,
-                            label:{
-                                position:'center',
-                                formatter: '{d}%',
-                                color:"#fff",
-                                fontSize:28,
-                            },
-                            value: pie1, 
-                            name: '底色'
-                        },
-                        {
-                            markPoint:{
+                        ]
+                    }
+                ]
+            });
+            this.chartPIE2.setOption({
+                series: [
+                    {
+                        data: [
+                            {
                                 itemStyle: {
-                                    color:'#0079b7',
-                                    barBorderRadius:23,
+                                    color: '#0079b7',
                                 },
+                                selected: false,
+                                label: {
+                                    position: 'center',
+                                    formatter: '{d}%',
+                                    color: "#fff",
+                                    fontSize: 28,
+                                },
+                                value: pie3,
+                                name: '底色'
                             },
-                            itemStyle: {
-                                color:'#01283d',
-                                borderColor:"#0079b7",
-                                borderWidth:1,
-                            },
-                            value: pie2, 
-                            name: '底色'
-                        },
-                    ]
-                }
-            ]});
-            this.chartPIE4.setOption({series: [
-                {
-                    data: [
-                        {
-                            itemStyle: {
-                                color:'#0079b7',
-                            },
-                            selected:false,
-                            label:{
-                                position:'center',
-                                formatter: '{d}%',
-                                color:"#fff",
-                                fontSize:28,
-                            },
-                            value: pie1, 
-                            name: '底色'
-                        },
-                        {
-                            markPoint:{
+                            {
+                                markPoint: {
+                                    itemStyle: {
+                                        color: '#0079b7',
+                                        barBorderRadius: 23,
+                                    },
+                                },
                                 itemStyle: {
-                                    color:'#0079b7',
-                                    barBorderRadius:23,
+                                    color: '#01283d',
+                                    borderColor: "#0079b7",
+                                    borderWidth: 1,
                                 },
+                                value: pie4,
+                                name: '底色'
                             },
-                            itemStyle: {
-                                color:'#01283d',
-                                borderColor:"#0079b7",
-                                borderWidth:1,
-                            },
-                            value: pie2, 
-                            name: '底色'
-                        },
-                    ]
-                }
-            ]});
-            this.chartPIE5.setOption({series: [
-                {
-                    data: [
-                        {
-                            itemStyle: {
-                                color:'#0079b7',
-                            },
-                            selected:false,
-                            label:{
-                                position:'center',
-                                formatter: '{d}%',
-                                color:"#fff",
-                                fontSize:28,
-                            },
-                            value: pie1, 
-                            name: '底色'
-                        },
-                        {
-                            markPoint:{
+                        ]
+                    }
+                ]
+            });
+            this.chartPIE3.setOption({
+                series: [
+                    {
+                        data: [
+                            {
                                 itemStyle: {
-                                    color:'#0079b7',
-                                    barBorderRadius:23,
+                                    color: '#0079b7',
                                 },
+                                selected: false,
+                                label: {
+                                    position: 'center',
+                                    formatter: '{d}%',
+                                    color: "#fff",
+                                    fontSize: 28,
+                                },
+                                value: pie1,
+                                name: '底色'
                             },
-                            itemStyle: {
-                                color:'#01283d',
-                                borderColor:"#0079b7",
-                                borderWidth:1,
-                            },
-                            value: pie2, 
-                            name: '底色'
-                        },
-                    ]
-                }
-            ]});
-            this.chartPIE6.setOption({series: [
-                {
-                    data: [
-                        {
-                            itemStyle: {
-                                color:'#0079b7',
-                            },
-                            selected:false,
-                            label:{
-                                position:'center',
-                                formatter: '{d}%',
-                                color:"#fff",
-                                fontSize:28,
-                            },
-                            value: pie1, 
-                            name: '底色'
-                        },
-                        {
-                            markPoint:{
+                            {
+                                markPoint: {
+                                    itemStyle: {
+                                        color: '#0079b7',
+                                        barBorderRadius: 23,
+                                    },
+                                },
                                 itemStyle: {
-                                    color:'#0079b7',
-                                    barBorderRadius:23,
+                                    color: '#01283d',
+                                    borderColor: "#0079b7",
+                                    borderWidth: 1,
                                 },
+                                value: pie2,
+                                name: '底色'
                             },
-                            itemStyle: {
-                                color:'#01283d',
-                                borderColor:"#0079b7",
-                                borderWidth:1,
+                        ]
+                    }
+                ]
+            });
+            this.chartPIE4.setOption({
+                series: [
+                    {
+                        data: [
+                            {
+                                itemStyle: {
+                                    color: '#0079b7',
+                                },
+                                selected: false,
+                                label: {
+                                    position: 'center',
+                                    formatter: '{d}%',
+                                    color: "#fff",
+                                    fontSize: 28,
+                                },
+                                value: pie1,
+                                name: '底色'
                             },
-                            value: pie2, 
-                            name: '底色'
-                        },
-                    ]
-                }
-            ]});
+                            {
+                                markPoint: {
+                                    itemStyle: {
+                                        color: '#0079b7',
+                                        barBorderRadius: 23,
+                                    },
+                                },
+                                itemStyle: {
+                                    color: '#01283d',
+                                    borderColor: "#0079b7",
+                                    borderWidth: 1,
+                                },
+                                value: pie2,
+                                name: '底色'
+                            },
+                        ]
+                    }
+                ]
+            });
+            this.chartPIE5.setOption({
+                series: [
+                    {
+                        data: [
+                            {
+                                itemStyle: {
+                                    color: '#0079b7',
+                                },
+                                selected: false,
+                                label: {
+                                    position: 'center',
+                                    formatter: '{d}%',
+                                    color: "#fff",
+                                    fontSize: 28,
+                                },
+                                value: pie1,
+                                name: '底色'
+                            },
+                            {
+                                markPoint: {
+                                    itemStyle: {
+                                        color: '#0079b7',
+                                        barBorderRadius: 23,
+                                    },
+                                },
+                                itemStyle: {
+                                    color: '#01283d',
+                                    borderColor: "#0079b7",
+                                    borderWidth: 1,
+                                },
+                                value: pie2,
+                                name: '底色'
+                            },
+                        ]
+                    }
+                ]
+            });
+            this.chartPIE6.setOption({
+                series: [
+                    {
+                        data: [
+                            {
+                                itemStyle: {
+                                    color: '#0079b7',
+                                },
+                                selected: false,
+                                label: {
+                                    position: 'center',
+                                    formatter: '{d}%',
+                                    color: "#fff",
+                                    fontSize: 28,
+                                },
+                                value: pie1,
+                                name: '底色'
+                            },
+                            {
+                                markPoint: {
+                                    itemStyle: {
+                                        color: '#0079b7',
+                                        barBorderRadius: 23,
+                                    },
+                                },
+                                itemStyle: {
+                                    color: '#01283d',
+                                    borderColor: "#0079b7",
+                                    borderWidth: 1,
+                                },
+                                value: pie2,
+                                name: '底色'
+                            },
+                        ]
+                    }
+                ]
+            });
             this.chartPRB.setOption({
                 // xAxis: [
                 //     {
@@ -1019,19 +1060,832 @@ let zblVue = new Vue({
             })
         },
         /**
-     * 右侧筛选栏点击select弹出公共事件
-     */
-    controlSelct(){
-         this.isShowSelect = !this.isShowSelect;
-    },
-    /**
-     * 点击其他区域select收起公共事件
-     */
-    controlSelctBottom(){
-        this.isShowSelectBottom = !this.isShowSelectBottom;
-        console.log(this.isShowSelectBottom)
-        
-    }
+         * 右侧筛选栏点击select弹出公共事件
+         */
+        controlSelct () {
+            this.isShowSelect = !this.isShowSelect;
+        },
+        /**
+         * 点击其他区域select收起公共事件
+         */
+        controlSelctBottom () {
+            this.isShowSelectBottom = !this.isShowSelectBottom;
+            console.log(this.isShowSelectBottom)
+
+        },
+        initChart5G () {
+            this.chart5G = echarts.init(document.getElementById('chart5G'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['5G用户量']
+                },
+                // dataZoom: {
+                //     show: false,
+                //     start: 0,
+                //     end: 100
+                // },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // name: '',
+                        // max: 30,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // max: 1200,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: '5G用户量',
+                        type: 'bar',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#0e6976'
+                        },
+                        data: []
+                    }
+                ]
+            };
+            this.chart5G.setOption(option);
+        },
+        axiosChart5G (params) {
+            this.chart5G.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData4
+                }]
+            })
+        },
+        initChartTB () {
+            this.chartTB = echarts.init(document.getElementById('chartTB'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['上行', '下行', '无线利用率']
+                },
+                // dataZoom: {
+                //     show: false,
+                //     start: 0,
+                //     end: 100
+                // },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // name: '',
+                        // max: 30,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // max: 1200,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: '上行',
+                        type: 'bar',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#3b97cc'
+                        },
+                        data: []
+                    },
+                    {
+                        name: '下行',
+                        type: 'bar',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#0076e3'
+                        },
+                        data: []
+                    },
+                    {
+                        name: '无线利用率',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartTB.setOption(option);
+        },
+        axiosChartTB (params) {
+            this.chartTB.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData
+                }, {
+                    data: chartData
+                }, {
+                    data: chartData
+                }]
+            })
+        },
+        initChartPRC2 () {
+            this.chartPRC2 = echarts.init(document.getElementById('chartPRC2'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['PRC连接数', '峰值用户数', '无线接通率']
+                },
+                // dataZoom: {
+                //     show: false,
+                //     start: 0,
+                //     end: 100
+                // },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // name: '',
+                        // max: 30,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // max: 1200,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: 'PRC连接数',
+                        type: 'bar',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#4896ee'
+                        },
+                        data: []
+                    },
+                    {
+                        name: '峰值用户数',
+                        type: 'bar',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#189896'
+                        },
+                        data: []
+                    },
+                    {
+                        name: '无线接通率',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#4c94ae' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartPRC2.setOption(option);
+        },
+        axiosChartPRC2 (params) {
+            this.chartPRC2.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData
+                }, {
+                    data: chartData
+                }, {
+                    data: chartData
+                }]
+            })
+        },
+        initChartPUPD () {
+            this.chartPUPD = echarts.init(document.getElementById('chartPUPD'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['上下PUSCH行流量', '下行PDCCH利用率']
+                },
+                // dataZoom: {
+                //     show: false,
+                //     start: 0,
+                //     end: 100
+                // },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // name: '',
+                        // max: 30,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // max: 1200,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: '上下PUSCH行流量',
+                        type: 'line',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#134b76'
+                        },
+                        lineStyle: { // 柱条
+                            color: 'transparent'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#134b76' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#134b76' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol:"circle",
+                        data: []
+                    },
+                    {
+                        name: '下行PDCCH利用率',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartPUPD.setOption(option);
+        },
+        axiosChartPUPD (params) {
+            this.chartPUPD.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData10
+                }, {
+                    data: chartData11
+                }]
+            })
+        },
+        initChartWXQHSX () {
+            this.chartWXQHSX = echarts.init(document.getElementById('chartWXQHSX'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['无线掉线率', '切换成功率', '上行干扰电平']
+                },
+                // dataZoom: {
+                //     show: false,
+                //     start: 0,
+                //     end: 100
+                // },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // name: '',
+                        // max: 30,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // max: 1200,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: '无线掉线率',
+                        type: 'line',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#20868d'
+                        },
+                        lineStyle:{
+                            color: 'transparent'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#20868d' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#20868d' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",
+                        data: []
+                    },
+                    {
+                        name: '切换成功率',
+                        type: 'line',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#145f85'
+                        },
+                        lineStyle:{
+                            color: 'transparent'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#145f85' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#145f85' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",
+                        data: []
+                    },
+                    {
+                        name: '上行干扰电平',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                       
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartWXQHSX.setOption(option);
+        },
+        axiosChartWXQHSX (params) {
+            this.chartWXQHSX.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData9
+                }, {
+                    data: chartData1
+                }, {
+                    data: chartData7
+                }]
+            })
+        },
+        initChartPRB2 () {
+            this.chartPRB2 = echarts.init(document.getElementById('chartPRB2'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['上行', '下行']
+                },
+                // dataZoom: {
+                //     show: false,
+                //     start: 0,
+                //     end: 100
+                // },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // name: '',
+                        // max: 30,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // max: 1200,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: '上行',
+                        type: 'line',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        lineStyle: { // 柱条
+                            color: '#248bb1'
+                        },
+                        itemStyle:{
+                            color: '#248bb1'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#248bb1' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#248bb1' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    },
+                    {
+                        name: '下行',
+                        type: 'line',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        lineStyle: { // 柱条
+                            color: '#21568c'
+                        },
+                        itemStyle:{
+                            color: '#21568c'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#21568c' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#21568c' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartPRB2.setOption(option);
+        },
+        axiosChartPRB2 (params) {
+            this.chartPRB2.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData5
+                }, {
+                    data: chartData12
+                }]
+            })
+        },
 
     },
 })

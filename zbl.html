@@ -33,33 +33,27 @@
                 </div>
                 <div class="main-center">
                     <div class="main-center-title">
-                        <ul class="clearfix">
-                            <li class="fl active">
-                                4G性能
-                               <img src="img/yelloLog.png" />
+                        <ul class="clearfix tabs">
+                            <li class="fl tab" :class = "[this.curTabsName === '0' ? 'active' : '']" @click="tabsChange('0')">
+                                <div>4G性能</div> 
+                               <!-- <img src="img/yelloLog.png" /> -->
                             </li>
-                            <li class="fl">5G性能</li>
-                            <li class="fl">数据感知</li>
-                            <li class="fl">语音感知</li>
+                            <li class="fl tab" :class = "[this.curTabsName === '1' ? 'active' : '']" @click="tabsChange('1')"><div>5G性能</div> </li>
+                            <li class="fl tab" :class = "[this.curTabsName === '2' ? 'active' : '']" @click="tabsChange('2')"><div>数据感知</div> </li>
+                            <li class="fl tab" :class = "[this.curTabsName === '3' ? 'active' : '']" @click="tabsChange('3')"><div>语音感知</div> </li>
                             <li class="f1 r1">
                                 <div class="select">
                                     <div class="select-name" @click="controlSelct">颗粒度选择</div>
                                     <div class="select-ul" v-show="isShowSelect">
-                                        <div class="select-li" @click="controlSelct">
-                                            颗粒度选择
-                                        </div>
-                                        <div class="select-li" @click="controlSelct">
-                                            颗粒度选择
-                                        </div>
-                                        <div class="select-li" @click="controlSelct">
-                                            颗粒度选择
-                                        </div>
+                                        <div class="select-li" @click="controlSelct">颗粒度选择</div>
+                                        <div class="select-li" @click="controlSelct">颗粒度选择</div>
+                                        <div class="select-li" @click="controlSelct">颗粒度选择</div>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div class="main-center-contain clearfix">
+                    <div v-show= "curTabsName === '0'" class="main-center-contain clearfix">
                         <div class="main-center-contain-left fl">
                             <ul class="zcl" style="margin-top: 52px;">
                                 <li>
@@ -152,6 +146,38 @@
                             </div>
                         </div>
                     </div>
+                    <div  v-show= "curTabsName === '1'" class="main-center-contain clearfix five-g">
+                        <div class="clearfix five-g-contain-top">
+                            <div class="fl chart-left-contain-top">
+                                <div class="chart-title">5G用户量</div>
+                                <div class="chart" id="chart5G"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">上下行流量+无线利用率</div>
+                                <div class="chart" id="chartTB"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">PRC连接数+峰值用户数+无线接通率</div>
+                                <div class="chart" id="chartPRC2"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fl chart-left-contain-top">
+                                <div class="chart-title">上下PUSCH行流量+下行PDCCH利用率</div>
+                                <div class="chart" id="chartPUPD"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">无线掉线率+切换成功率+上行干扰电平</div>
+                                <div class="chart" id="chartWXQHSX"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">PRB上下行利用率</div>
+                                <div class="chart" id="chartPRB2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  v-show= "curTabsName === '2'">数据感知</div>
+                    <div  v-show= "curTabsName === '3'">语音感知</div>
                 </div>
                 <div class="main-bottom">
                     <div class="main-bottom-title">

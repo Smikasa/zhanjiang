@@ -117,12 +117,17 @@
     font-size: 28px;
     color:#248ecc ;
 }
-.main-center .main-center-title ul{
+.main-center .main-center-title {
     background: url(../img/all6.png);
     background-size: 100%;
+    height: 83px;
+    line-height: 83px;
+}
+
+.main-center .main-center-title ul{
     list-style-type: none;
-    padding-top:30px;
-    padding-bottom:24px;
+    /* padding-top:30px; */
+    /* padding-bottom:24px; */
     padding-left:45px;
     position: relative;
 }
@@ -132,10 +137,12 @@
     color: #154b65;
     font-weight:700;
     position: relative;
+    cursor: pointer;
 }
 .main-center .main-center-title ul>li.r1{
-    right: -516px;
-    bottom: 6px;
+    /* right: -516px; */
+    /* bottom: 6px; */
+    float: right;
 }
 .main-center .main-center-title ul>li.r1 select{
     color:#d19328;
@@ -143,16 +150,32 @@
     border:none;
     background-color:transparent ;
 }
-.main-center .main-center-title ul>li img{
+/* .main-center .main-center-title ul>li img{
     position: absolute;
     bottom: -17px;
     left:50%;
     transform: translateX(-50%);
     width:80%;
-}
+} */
 .main-center .main-center-title ul>li.active{
     color:#fff;
 }
+.main-center .main-center-title ul>li.tab.active div{
+    position: relative;
+}
+
+.main-center .main-center-title ul>li.tab.active div:after{
+    content: '';
+    /* width: 97%; */
+    height: 5px;
+    background-color: #d19328;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 6px;
+}
+
+
 .main-center-contain .main-center-contain-left ul.zcl{
     list-style-type: none;
     background: url('../img/1-2.png');
@@ -218,7 +241,7 @@
     height:80px;
     margin-bottom: 80px;
     line-height: 80px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 #zlbb >li{
     font-size:30px;
@@ -238,12 +261,22 @@
 .main-center .main-center-contain-right .chart-left-contain {
     margin-right: 100px;
 }
+
+.main-center .five-g-contain-top {
+    margin-bottom: 128px;
+}
+
+.main-center .chart {
+    width: 495px;
+    height: 270px;
+}
+
 .main-center .main-center-contain-right .chart {
     width: 495px;
     height: 270px;
     /* margin-bottom: 100px; */
 }
-.main-center .main-center-contain-right .chart-title {
+.main-center .chart-title {
     color: #fffFFF;
     font-size: 28px;
     margin-bottom: 34px;
@@ -303,16 +336,18 @@
 .select-ul {
     position: absolute;
     left: 0;
-    top: 40px;
+    top: 80px;
     border: 1px solid black;
-    width: 160px;
-    text-align: center;
+    /* width: 160px; */
+    text-align: left;
+    background-color: #101b31;
 }
 .select-ul .select-li {
     font-size: 14px;
-    padding: 8px;
+    padding: 8px 14px;
     cursor: pointer;
-    color: #175773;
+    color: #6a6a6a;
+    line-height: 1;
 }
 
 .select-ul .select-li:hover {
@@ -335,12 +370,12 @@
     left: 0;
     top: 80px;
     border: 1px solid black;
-    width: 160px;
-    text-align: center;
+    /* width: 160px; */
+    text-align: left;
 }
 .main-bottom .select-ul .select-li {
     font-size: 14px;
-    padding: 8px;
+    padding: 8px 14px;
     cursor: pointer;
 }
 

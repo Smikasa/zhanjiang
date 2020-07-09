@@ -4,6 +4,16 @@ var chartData2 = []
 var chartData3 = []
 var chartData4 = []
 var chartData5 = []
+var chartData6 = []
+var chartData7 = []
+var chartData8 = []
+var chartData9 = []
+var chartData10 = []
+var chartData11 = []
+var chartData12 = []
+var chartData13 = []
+var chartData14 = []
+var chartData15 = []
 var num = 7;
 
 for (let index = 0; index < num; index++) {
@@ -26,8 +36,63 @@ for (let index = 0; index < num; index++) {
     const element = Math.ceil(Math.random()*100);
     chartData5.push(element)
 }
+
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData6.push(element)
+}
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData7.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData8.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData9.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData10.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData11.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData12.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData13.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData14.push(element)
+}
+
+for (let index = 0; index < num; index++) {
+    const element = Math.ceil(Math.random()*100);
+    chartData15.push(element)
+}
+
+
+
+
 var chartDataX =  ['12:15','12:16','12:17','12:18','12:19','12:20','12:21']
 
+var chartDataX1 =  [0,1,2,3,4,5,6]
 
 var pie1 = 44;
 
