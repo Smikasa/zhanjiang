@@ -57,6 +57,15 @@ let zblVue = new Vue({
         chartWXQHSX: '',
         chartPRB2: '',
 
+        //数据感知
+        chartHTTP: '',
+        chartT: '',
+        chartB: '',
+        chartKPBS: '',
+        chartTCP: '',
+        chartTCP2: '',
+        
+        //语音感知
 
         isShowSelect: false,
         isShowSelectBottom: false,
@@ -100,6 +109,32 @@ let zblVue = new Vue({
             this.axiosChartWXQHSX();
             this.initChartPRB2();
             this.axiosChartPRB2();
+            
+            // 数据感知 
+
+            this.initChartHTTP();
+            this.axiosChartHTTP();
+            this.initChartT();
+            this.axiosChartT();
+            this.initChartB();
+            this.axiosChartB();
+            this.initChartKPBS();
+            this.axiosChartKPBS();
+            this.initChartTCP();
+            this.axiosChartTCP();
+            this.initChartTCP2();
+            this.axiosChartTCP2();
+
+             // 数据感知 
+
+             this.initChartAV();
+             this.axiosChartAV();
+             this.initChartAV1();
+             this.axiosChartAV1();
+             this.initChartSRVCC();
+             this.axiosChartSRVCC();
+             this.initChartLOSS();
+             this.axiosChartLOSS();
 
         },
         tabsChange (name) {
@@ -138,7 +173,7 @@ let zblVue = new Vue({
             }
         },
         /**
-         * @description 上下行流量+无线利用率
+         * @description 初始化-4G性能-上下行流量+无线利用率
          */
         initChartSX () {
             this.chartSX = echarts.init(document.getElementById('chartSX'));
@@ -165,11 +200,6 @@ let zblVue = new Vue({
                     inactiveColor: '#575b61',// 图例关闭时颜色
                     data: ['上行', '下行', '无线利用率']
                 },
-                // dataZoom: {
-                //     show: false,
-                //     start: 0,
-                //     end: 100
-                // },
                 xAxis: [
                     {
                         type: 'category',
@@ -188,13 +218,9 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // name: '',
-                        // max: 30,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     },
                     {
                         type: 'value',
@@ -203,20 +229,15 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // max: 1200,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     }
                 ],
                 series: [
                     {
                         name: '上行',
                         type: 'bar',
-                        // xAxisIndex: 1, // 对应坐标轴
-                        // yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
                             color: '#3b97cc'
                         },
@@ -225,8 +246,6 @@ let zblVue = new Vue({
                     {
                         name: '下行',
                         type: 'bar',
-                        // xAxisIndex: 1, // 对应坐标轴
-                        // yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
                             color: '#0076e3'
                         },
@@ -249,7 +268,7 @@ let zblVue = new Vue({
             this.chartSX.setOption(option);
         },
         /**
-        * 获取数据-上下行流量+无线利用率
+        * @description 获取数据-4G性能-上下行流量+无线利用率
         */
         axiosChartSX (params) {
             this.chartSX.setOption({
@@ -268,7 +287,7 @@ let zblVue = new Vue({
             })
         },
         /**
-         * @description PRC连接数+峰值用户数+无线接通率
+         * @description 初始化-4G性能-PRC连接数+峰值用户数+无线接通率
          */
         initChartPRC () {
             this.chartPRC = echarts.init(document.getElementById('chartPRC'));
@@ -395,7 +414,7 @@ let zblVue = new Vue({
             this.chartPRC.setOption(option);
         },
         /**
-        * 获取数据-PRC连接数+峰值用户数+无线接通率
+        * @description 获取数据-4G性能-PRC连接数+峰值用户数+无线接通率
         */
         axiosChartPRC (params) {
             this.chartPRC.setOption({
@@ -414,7 +433,7 @@ let zblVue = new Vue({
             })
         },
         /**
-         * @description 无线掉线率+切换成功率+上行干扰电平
+         * @description 初始化-4G性能-无线掉线率+切换成功率+上行干扰电平
          */
         initChartWX () {
             this.chartWX = echarts.init(document.getElementById('chartWX'));
@@ -575,7 +594,7 @@ let zblVue = new Vue({
             this.chartWX.setOption(option);
         },
         /**
-        * 获取数据-无线掉线率+切换成功率+ 上行干扰电平
+        * @description 获取数据-4G性能-无线掉线率+切换成功率+ 上行干扰电平
         */
         axiosChartWX (params) {
             this.chartWX.setOption({
@@ -594,7 +613,7 @@ let zblVue = new Vue({
             })
         },
         /**
-         * @description PRB上下行利用率
+         * @description 初始化-4G性能-PRB上下行利用率
          */
         initChartPRB () {
             this.chartPRB = echarts.init(document.getElementById('chartPRB'));
@@ -725,7 +744,7 @@ let zblVue = new Vue({
             this.chartPRB.setOption(option);
         },
         /**
-        * 获取数据-PRB上下行利用率
+        * @description 获取数据-4G性能-PRB上下行利用率
         */
         axiosChartPRB (params) {
             this.chartPRB.setOption({
@@ -752,10 +771,6 @@ let zblVue = new Vue({
             this.chartPIE5 = echarts.init(document.getElementById('chartPIE5'));
             this.chartPIE6 = echarts.init(document.getElementById('chartPIE6'));
             let option = {
-                // tooltip: {
-                //     trigger: 'item',
-                //     formatter: '{a} <br/>{b}: {c} ({d}%)'
-                // },
                 tooltip: null,
                 animation: false,
                 legend: null,
@@ -765,17 +780,6 @@ let zblVue = new Vue({
                         type: 'pie',
                         radius: ['70%', '88%'],
                         avoidLabelOverlap: false,
-                        // label: {
-                        //     show: false,
-                        //     position: 'center'
-                        // },
-                        // emphasis: {
-                        //     label: {
-                        //         show: true,
-                        //         fontSize: '30',
-                        //         fontWeight: 'bold'
-                        //     }
-                        // },
                         labelLine: {
                             show: false
                         },
@@ -1070,9 +1074,10 @@ let zblVue = new Vue({
          */
         controlSelctBottom () {
             this.isShowSelectBottom = !this.isShowSelectBottom;
-            console.log(this.isShowSelectBottom)
-
         },
+         /**
+         * @description 初始化-5g性能-5g用户量
+         */
         initChart5G () {
             this.chart5G = echarts.init(document.getElementById('chart5G'));
             let option = {
@@ -1159,6 +1164,9 @@ let zblVue = new Vue({
             };
             this.chart5G.setOption(option);
         },
+         /**
+         * @description 获取数据-5g性能-5g用户量
+         */
         axiosChart5G (params) {
             this.chart5G.setOption({
                 xAxis: [
@@ -1171,6 +1179,9 @@ let zblVue = new Vue({
                 }]
             })
         },
+        /**
+         * @description 初始化-5g性能-上下行流量+无线利用率
+         */
         initChartTB () {
             this.chartTB = echarts.init(document.getElementById('chartTB'));
             let option = {
@@ -1279,6 +1290,9 @@ let zblVue = new Vue({
             };
             this.chartTB.setOption(option);
         },
+        /**
+         * @description 初始化-获取数据-上下行流量+无线利用率
+         */
         axiosChartTB (params) {
             this.chartTB.setOption({
                 xAxis: [
@@ -1295,6 +1309,9 @@ let zblVue = new Vue({
                 }]
             })
         },
+        /**
+         * @description 初始化-5g性能-PRC连接数+峰值用户数+无线接通率
+         */
         initChartPRC2 () {
             this.chartPRC2 = echarts.init(document.getElementById('chartPRC2'));
             let option = {
@@ -1320,11 +1337,6 @@ let zblVue = new Vue({
                     inactiveColor: '#575b61',// 图例关闭时颜色
                     data: ['PRC连接数', '峰值用户数', '无线接通率']
                 },
-                // dataZoom: {
-                //     show: false,
-                //     start: 0,
-                //     end: 100
-                // },
                 xAxis: [
                     {
                         type: 'category',
@@ -1343,13 +1355,9 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // name: '',
-                        // max: 30,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     },
                     {
                         type: 'value',
@@ -1358,12 +1366,9 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // max: 1200,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     }
                 ],
                 series: [
@@ -1418,6 +1423,9 @@ let zblVue = new Vue({
             };
             this.chartPRC2.setOption(option);
         },
+        /**
+         * @description 获取数据-5g性能-PRC连接数+峰值用户数+无线接通率
+         */
         axiosChartPRC2 (params) {
             this.chartPRC2.setOption({
                 xAxis: [
@@ -1434,6 +1442,9 @@ let zblVue = new Vue({
                 }]
             })
         },
+        /**
+         * @description 初始化-5g性能-上下PUSCH行流量+下行PDCCH利用率
+         */
         initChartPUPD () {
             this.chartPUPD = echarts.init(document.getElementById('chartPUPD'));
             let option = {
@@ -1459,11 +1470,6 @@ let zblVue = new Vue({
                     inactiveColor: '#575b61',// 图例关闭时颜色
                     data: ['上下PUSCH行流量', '下行PDCCH利用率']
                 },
-                // dataZoom: {
-                //     show: false,
-                //     start: 0,
-                //     end: 100
-                // },
                 xAxis: [
                     {
                         type: 'category',
@@ -1482,13 +1488,9 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // name: '',
-                        // max: 30,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     },
                     {
                         type: 'value',
@@ -1497,20 +1499,15 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // max: 1200,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     }
                 ],
                 series: [
                     {
                         name: '上下PUSCH行流量',
                         type: 'line',
-                        // xAxisIndex: 1, // 对应坐标轴
-                        // yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
                             color: '#134b76'
                         },
@@ -1553,6 +1550,9 @@ let zblVue = new Vue({
             };
             this.chartPUPD.setOption(option);
         },
+        /**
+         * @description 获取数据-5g性能-上下PUSCH行流量+下行PDCCH利用率
+         */
         axiosChartPUPD (params) {
             this.chartPUPD.setOption({
                 xAxis: [
@@ -1567,6 +1567,9 @@ let zblVue = new Vue({
                 }]
             })
         },
+        /**
+         * @description 初始化-5g性能-无线掉线率+切换成功率+上行干扰电平
+         */
         initChartWXQHSX () {
             this.chartWXQHSX = echarts.init(document.getElementById('chartWXQHSX'));
             let option = {
@@ -1592,11 +1595,6 @@ let zblVue = new Vue({
                     inactiveColor: '#575b61',// 图例关闭时颜色
                     data: ['无线掉线率', '切换成功率', '上行干扰电平']
                 },
-                // dataZoom: {
-                //     show: false,
-                //     start: 0,
-                //     end: 100
-                // },
                 xAxis: [
                     {
                         type: 'category',
@@ -1615,13 +1613,9 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // name: '',
-                        // max: 30,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     },
                     {
                         type: 'value',
@@ -1630,20 +1624,15 @@ let zblVue = new Vue({
                         },
                         minInterval: 1,// 数值取整
                         scale: true,
-                        // max: 1200,
-                        // min: 0,
                         splitLine: {
                             show: false     //去掉网格线
                         },
-                        // boundaryGap: [0.2, 0.2]
                     }
                 ],
                 series: [
                     {
                         name: '无线掉线率',
                         type: 'line',
-                        // xAxisIndex: 1, // 对应坐标轴
-                        // yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
                             color: '#20868d'
                         },
@@ -1673,8 +1662,6 @@ let zblVue = new Vue({
                     {
                         name: '切换成功率',
                         type: 'line',
-                        // xAxisIndex: 1, // 对应坐标轴
-                        // yAxisIndex: 1, // 对应坐标轴
                         itemStyle: { // 柱条
                             color: '#145f85'
                         },
@@ -1718,6 +1705,9 @@ let zblVue = new Vue({
             };
             this.chartWXQHSX.setOption(option);
         },
+        /**
+         * @description 获取数据-5g性能-无线掉线率+切换成功率+上行干扰电平
+         */
         axiosChartWXQHSX (params) {
             this.chartWXQHSX.setOption({
                 xAxis: [
@@ -1734,6 +1724,9 @@ let zblVue = new Vue({
                 }]
             })
         },
+         /**
+         * @description 初始化-5g性能-上行+下行
+         */
         initChartPRB2 () {
             this.chartPRB2 = echarts.init(document.getElementById('chartPRB2'));
             let option = {
@@ -1758,6 +1751,148 @@ let zblVue = new Vue({
                     itemGap: 35,
                     inactiveColor: '#575b61',// 图例关闭时颜色
                     data: ['上行', '下行']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: '上行',
+                        type: 'line',
+                        lineStyle: { // 柱条
+                            color: '#248bb1'
+                        },
+                        itemStyle:{
+                            color: '#248bb1'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#248bb1' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#248bb1' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    },
+                    {
+                        name: '下行',
+                        type: 'line',
+                        lineStyle: { // 柱条
+                            color: '#21568c'
+                        },
+                        itemStyle:{
+                            color: '#21568c'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#21568c' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#21568c' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartPRB2.setOption(option);
+        },
+         /**
+         * @description 初始化-5g性能-上行+下行
+         */
+        axiosChartPRB2 (params) {
+            this.chartPRB2.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData5
+                }, {
+                    data: chartData12
+                }]
+            })
+        },
+         /**
+         * @description 初始化-数据感知-HTTP业务成功率+HTTP平均响应延迟
+         */
+        initChartHTTP () {
+            this.chartHTTP = echarts.init(document.getElementById('chartHTTP'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['HTTP业务成功率','HTTP平均响应延迟']
                 },
                 // dataZoom: {
                 //     show: false,
@@ -1807,10 +1942,562 @@ let zblVue = new Vue({
                 ],
                 series: [
                     {
-                        name: '上行',
-                        type: 'line',
+                        name: 'HTTP业务成功率',
+                        type: 'bar',
                         // xAxisIndex: 1, // 对应坐标轴
                         // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#0e6976'
+                        },
+                        data: []
+                    },
+                    {
+                        name: 'HTTP平均响应延迟',
+                        type: 'bar',
+                        // xAxisIndex: 1, // 对应坐标轴
+                        // yAxisIndex: 1, // 对应坐标轴
+                        itemStyle: { // 柱条
+                            color: '#0e6976'
+                        },
+                        data: []
+                    }
+                ]
+            };
+            this.chartHTTP.setOption(option);
+        },
+         /**
+         * @description 获取数据-数据感知-HTTP业务成功率+HTTP平均响应延迟
+         */
+        axiosChartHTTP (params) {
+            this.chartHTTP.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData4
+                }]
+            })
+        },
+        /**
+         * @description 初始化-数据感知-上行
+         */
+        initChartT () {
+            this.chartT = echarts.init(document.getElementById('chartT'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['上行']
+                },
+                // dataZoom: {
+                //     show: false,
+                //     start: 0,
+                //     end: 100
+                // },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        // name: '',
+                        // max: 30,
+                        // min: 0,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                        // boundaryGap: [0.2, 0.2]
+                    }
+                ],
+                series: [
+                    {
+                        name: '上行',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartT.setOption(option);
+        },
+        /**
+         * @description 初始化-获取数据-上行
+         */
+        axiosChartT (params) {
+            this.chartT.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData
+                }]
+            })
+        },
+        /**
+         * @description 初始化-数据感知-下行
+         */
+        initChartB () {
+            this.chartB = echarts.init(document.getElementById('chartB'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['下行']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: '下行',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#4c94ae' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartB.setOption(option);
+        },
+        /**
+         * @description 获取数据-数据感知-PRC连接数+峰值用户数+无线接通率
+         */
+        axiosChartB (params) {
+            this.chartB.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData
+                }]
+            })
+        },
+        /**
+         * @description 初始化-数据感知-下行速率+下行速率(>500k)
+         */
+        initChartKPBS () {
+            this.chartKPBS = echarts.init(document.getElementById('chartKPBS'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['下行速率', '下行速率(>500k)']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: '下行速率',
+                        type: 'line',
+                        itemStyle: { // 柱条
+                            color: '#134b76'
+                        },
+                        lineStyle: { // 柱条
+                            color: 'transparent'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#134b76' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#134b76' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol:"circle",
+                        data: []
+                    },
+                    {
+                        name: '下行速率(>500k)',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartKPBS.setOption(option);
+        },
+        /**
+         * @description 获取数据-数据感知-上下PUSCH行流量+下行PDCCH利用率
+         */
+        axiosChartKPBS (params) {
+            this.chartKPBS.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData10
+                }, {
+                    data: chartData11
+                }]
+            })
+        },
+        /**
+         * @description 初始化-数据感知-TCP建立成功率+TCP建立平均延时
+         */
+        initChartTCP () {
+            this.chartTCP = echarts.init(document.getElementById('chartTCP'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['TCP建立成功率', 'TCP建立平均延时']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: 'TCP建立成功率',
+                        type: 'line',
+                        itemStyle: { // 柱条
+                            color: '#20868d'
+                        },
+                        lineStyle:{
+                            color: 'transparent'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#20868d' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#20868d' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",
+                        data: []
+                    },
+                    {
+                        name: 'TCP建立平均延时',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                       
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartTCP.setOption(option);
+        },
+        /**
+         * @description 获取数据-数据感知-TCP建立成功率+TCP建立平均延时
+         */
+        axiosChartTCP (params) {
+            this.chartTCP.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData9
+                }, {
+                    data: chartData1
+                }]
+            })
+        },
+         /**
+         * @description 初始化-数据感知-TCP建立时延无线侧+TCP建立时延核心侧
+         */
+        initChartTCP2 () {
+            this.chartTCP2 = echarts.init(document.getElementById('chartTCP2'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['TCP建立时延无线侧', 'TCP建立时延核心侧']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: '上行',
+                        type: 'line',
                         lineStyle: { // 柱条
                             color: '#248bb1'
                         },
@@ -1840,8 +2527,6 @@ let zblVue = new Vue({
                     {
                         name: '下行',
                         type: 'line',
-                        // xAxisIndex: 1, // 对应坐标轴
-                        // yAxisIndex: 1, // 对应坐标轴
                         lineStyle: { // 柱条
                             color: '#21568c'
                         },
@@ -1870,10 +2555,13 @@ let zblVue = new Vue({
                     }
                 ]
             };
-            this.chartPRB2.setOption(option);
+            this.chartTCP2.setOption(option);
         },
-        axiosChartPRB2 (params) {
-            this.chartPRB2.setOption({
+         /**
+         * @description 初始化-数据感知-TCP建立时延无线侧+TCP建立时延核心侧
+         */
+        axiosChartTCP2 (params) {
+            this.chartTCP2.setOption({
                 xAxis: [
                     {
                         data: chartDataX1
@@ -1886,6 +2574,465 @@ let zblVue = new Vue({
                 }]
             })
         },
-
+        /**
+         * @description 初始化-语音感知-语音接通率+视频接通率
+         */
+        initChartAV () {
+            this.chartAV = echarts.init(document.getElementById('chartAV'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['语音接通率','视频接通率']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: '语音接通率',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#4c94ae' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    },{
+                        name: '视频接通率',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#4c94ae' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartAV.setOption(option);
+        },
+        /**
+         * @description 获取数据-语音感知-语音接通率+视频接通率
+         */
+        axiosChartAV (params) {
+            this.chartAV.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData
+                }]
+            })
+        },
+        /**
+         * @description 初始化-语音感知-语音掉线率+视频掉线率
+         */
+        initChartAV1 () {
+            this.chartAV1 = echarts.init(document.getElementById('chartAV1'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['语音掉线率', '视频掉线率']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    },
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: '下行速率',
+                        type: 'line',
+                        itemStyle: { // 柱条
+                            color: '#134b76'
+                        },
+                        lineStyle: { // 柱条
+                            color: 'transparent'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#134b76' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#134b76' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol:"circle",
+                        data: []
+                    },
+                    {
+                        name: '下行速率(>500k)',
+                        type: 'line',
+                        itemStyle: { // 折线拐点
+                            color: '#09b395'
+                        },
+                        lineStyle: {// 折线
+                            color: '#09b395'
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartAV1.setOption(option);
+        },
+        /**
+         * @description 获取数据-语音感知-语音掉线率+视频掉线率
+         */
+        axiosChartAV1 (params) {
+            this.chartAV1.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData10
+                }, {
+                    data: chartData11
+                }]
+            })
+        },
+        /**
+         * @description 初始化-语音感知-SRVCC切换成功率
+         */
+        initChartSRVCC () {
+            this.chartSRVCC = echarts.init(document.getElementById('chartSRVCC'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['SRVCC切换成功率']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: 'SRVCC切换成功率',
+                        type: 'line',
+                        itemStyle: { // 柱条
+                            color: '#20868d'
+                        },
+                        lineStyle:{
+                            color: 'transparent'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#20868d' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#20868d' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",
+                        data: []
+                    }
+                ]
+            };
+            this.chartSRVCC.setOption(option);
+        },
+        /**
+         * @description 获取数据-语音感知-SRVCC切换成功率
+         */
+        axiosChartSRVCC (params) {
+            this.chartSRVCC.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData11
+                }]
+            })
+        },
+         /**
+         * @description 初始化-语音感知-上行丢包率
+         */
+        initChartLOSS () {
+            this.chartLOSS = echarts.init(document.getElementById('chartLOSS'));
+            let option = {
+                title: {
+                    text: '',//标题
+                    subtext: ''// 副标题
+                },
+                textStyle: {
+                    fontFamily: 'SimHei'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#283b56'
+                        }
+                    }
+                },
+                legend: {
+                    left: 0,
+                    itemGap: 35,
+                    inactiveColor: '#575b61',// 图例关闭时颜色
+                    data: ['上行丢包率']
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        boundaryGap: true,
+                        data: []
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            color: '#575b61'
+                        },
+                        minInterval: 1,// 数值取整
+                        scale: true,
+                        splitLine: {
+                            show: false     //去掉网格线
+                        },
+                    }
+                ],
+                series: [
+                    {
+                        name: '上行丢包率',
+                        type: 'line',
+                        lineStyle: { // 柱条
+                            color: '#248bb1'
+                        },
+                        itemStyle:{
+                            color: '#248bb1'
+                        },
+                        areaStyle:{
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#248bb1' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5, color: '#248bb1' // 100% 处的颜色
+                                }, {
+                                    offset: 1, color: 'transparent' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        },
+                        symbol: "circle",// 实心圆
+                        data: []
+                    }
+                ]
+            };
+            this.chartLOSS.setOption(option);
+        },
+         /**
+         * @description 初始化-语音感知-上行丢包率
+         */
+        axiosChartLOSS (params) {
+            this.chartLOSS.setOption({
+                xAxis: [
+                    {
+                        data: chartDataX1
+                    }
+                ],
+                series: [{
+                    data: chartData5
+                }]
+            })
+        },
     },
 })

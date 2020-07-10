@@ -53,6 +53,7 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- 4G性能 -->
                     <div v-show= "curTabsName === '0'" class="main-center-contain clearfix">
                         <div class="main-center-contain-left fl">
                             <ul class="zcl" style="margin-top: 52px;">
@@ -146,6 +147,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 5G性能 -->
                     <div  v-show= "curTabsName === '1'" class="main-center-contain clearfix five-g">
                         <div class="clearfix five-g-contain-top">
                             <div class="fl chart-left-contain-top">
@@ -176,8 +178,131 @@
                             </div>
                         </div>
                     </div>
-                    <div  v-show= "curTabsName === '2'">数据感知</div>
-                    <div  v-show= "curTabsName === '3'">语音感知</div>
+                    <!-- 数据感知 -->
+                    <div  v-show= "curTabsName === '2'" class="main-center-contain clearfix">
+                        <div class="clearfix five-g-contain-top">
+                            <div class="fl chart-left-contain-top">
+                                <div class="chart-title">HTTP业务成功率+HTTP平均响应延迟</div>
+                                <div class="chart" id="chartHTTP"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">上行流量</div>
+                                <div class="chart" id="chartT"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">下行流量</div>
+                                <div class="chart" id="chartB"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="fl chart-left-contain-top">
+                                <div class="chart-title">下行速率+下行速率(>500k)</div>
+                                <div class="chart" id="chartKPBS"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">TCP建立成功率+TCP建立平均延时</div>
+                                <div class="chart" id="chartTCP"></div>
+                            </div>
+                            <div class="fl ">
+                                <div class="chart-title">TCP建立时延无线侧+TCP建立时延核心侧</div>
+                                <div class="chart" id="chartTCP2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  v-show= "curTabsName === '3'" class="main-center-contain clearfix">
+                        <div class="main-center-contain-left fl">
+                            <ul class="zcl" style="margin-top: 52px;">
+                                <li>
+                                    <img class="list-icon" src="img/ICON1.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE语音话务量</span>
+                                        <span class="list-data">12321</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON2.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE语音话接通率</span>
+                                        <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON3.png"/>
+                                    <p class="zl-box">
+                                    <span class="list-name">VOLTE语音掉线率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul class="zcl">
+                                <li>
+                                    <img class="list-icon" src="img/ICON4.png"/>
+                                    <p class="zl-box">
+                                    <span class="list-name">VOLTE视频话务量</span>
+                                    <span class="list-data">12321</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON5.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE视频接通率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON6.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">VOLTE视频掉线率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul class="zcl">
+                                <li>
+                                    <img class="list-icon" src="img/ICON7.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">SRVCC切换成功率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                                <li>
+                                    <img class="list-icon" src="img/ICON8.png"/>
+                                    <p class="zl-box">
+                                        <span class="list-name">PDCCH信道CCE利用率</span>
+                                    <span class="list-data">99%</span>
+                                    </p>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="main-center-contain-right fr">
+                            <div class="clearfix">
+                                <div class="fl chart-left-contain-top">
+                                    <div class="chart-title">语音接通率+视频接通率</div>
+                                    <div class="chart" id="chartAV"></div>
+                                </div>
+                                <div class="fr">
+                                    <div class="chart-title">语音掉线率+视频掉线率</div>
+                                    <div class="chart" id="chartAV1"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="fl chart-left-contain">
+                                    <div class="chart-title">SRVCC切换成功率</div>
+                                    <div class="chart" id="chartSRVCC"></div>
+                                </div>
+                                <div class="fr">
+                                    <div class="chart-title">上行丢包率</div>
+                                    <div class="chart" id="chartLOSS"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="main-bottom">
                     <div class="main-bottom-title">
